@@ -19,7 +19,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 84000,
     type: "Residential",
     description: "Manufactured home on 1 acre. Sold at auction onsite and online. Property attracted 14 registered bidders.",
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800",
+    image: "https://picsum.photos/seed/past1/800/500",
     year: 2026,
   },
   {
@@ -30,7 +30,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 52000,
     type: "Residential",
     description: "3BR/1BA home in Estill County. Successful online bidding auction with 22 bidders registered.",
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    image: "https://picsum.photos/seed/past2/800/500",
     year: 2025,
   },
   {
@@ -41,7 +41,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 38500,
     type: "Land",
     description: "12-acre tract with creek frontage. Beautiful property sold above reserve to an out-of-state buyer.",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800",
+    image: "https://picsum.photos/seed/past3/800/500",
     year: 2025,
   },
   {
@@ -52,7 +52,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 145000,
     type: "Commercial",
     description: "Downtown commercial building. Online bidding only. Sold at absolute auction after competitive bidding.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+    image: "https://picsum.photos/seed/past4/800/500",
     year: 2025,
   },
   {
@@ -63,7 +63,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 61000,
     type: "Residential",
     description: "2BR/1BA home with large outbuilding on 2 acres. Sold onsite with over 30 attendees.",
-    image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800",
+    image: "https://picsum.photos/seed/past5/800/500",
     year: 2025,
   },
   {
@@ -74,7 +74,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 29000,
     type: "Land",
     description: "5-acre commercial lot on Main Street. High-visibility location sold to local developer.",
-    image: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?w=800",
+    image: "https://picsum.photos/seed/past6/800/500",
     year: 2025,
   },
   {
@@ -85,7 +85,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 118000,
     type: "Residential",
     description: "Brick ranch home with 3BR/2BA. Sold above reserve to a local family after spirited bidding.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+    image: "https://picsum.photos/seed/past7/800/500",
     year: 2025,
   },
   {
@@ -96,7 +96,7 @@ export const pastAuctions: PastAuction[] = [
     soldPrice: 195000,
     type: "Commercial",
     description: "Former retail strip with 4 units in Leslie County. Sold at absolute auction, all units occupied at time of sale.",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800",
+    image: "https://picsum.photos/seed/past8/800/500",
     year: 2024,
   },
 ];

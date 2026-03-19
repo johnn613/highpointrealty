@@ -32,7 +32,7 @@ export const listings: Listing[] = [
     status: "Auction",
     dom: 5,
     description: "Manufactured home with large detached garage on 1 fenced acre. Great opportunity at auction — onsite and online bidding available.",
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800",
+    image: "https://picsum.photos/seed/listing1/800/500",
     auctionDate: "April 5, 2026",
     auctionTime: "10:00 AM ET",
   },
@@ -49,7 +49,7 @@ export const listings: Listing[] = [
     status: "Auction",
     dom: 12,
     description: "35-room motel just off I-75 in a high-visibility location near Renfro Valley. Excellent investment opportunity — selling at absolute auction.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800",
+    image: "https://picsum.photos/seed/listing2/800/500",
     auctionDate: "April 12, 2026",
     auctionTime: "11:00 AM ET",
   },
@@ -66,7 +66,7 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 21,
     description: "Charming home in the heart of Irvine with updates throughout. Walking distance to downtown shops and schools.",
-    image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800",
+    image: "https://picsum.photos/seed/listing3/800/500",
   },
   {
     id: 4,
@@ -82,7 +82,7 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 8,
     description: "Spacious family home on large lot with detached workshop. Perfect for families looking for space to grow.",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800",
+    image: "https://picsum.photos/seed/listing4/800/500",
   },
   {
     id: 5,
@@ -97,7 +97,7 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 34,
     description: "Historic commercial building in downtown Jackson with high foot traffic. Great investment or business opportunity.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800",
+    image: "https://picsum.photos/seed/listing5/800/500",
   },
   {
     id: 6,
@@ -113,7 +113,7 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 45,
     description: "Beautiful 5-acre wooded lot along the Kentucky River. Build your dream home in a peaceful, natural setting.",
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800",
+    image: "https://picsum.photos/seed/listing6/800/500",
   },
   {
     id: 7,
@@ -128,7 +128,7 @@ export const listings: Listing[] = [
     status: "Under Contract",
     dom: 3,
     description: "Move-in ready ranch home in a quiet neighborhood close to EKU. Updated kitchen and baths, large backyard.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800",
+    image: "https://picsum.photos/seed/listing7/800/500",
   },
   {
     id: 8,
@@ -143,7 +143,7 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 19,
     description: "Cozy country home with mountain views and creek frontage. A peaceful retreat with modern updates.",
-    image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=800",
+    image: "https://picsum.photos/seed/listing8/800/500",
   },
   {
     id: 9,
@@ -158,7 +158,7 @@ export const listings: Listing[] = [
     status: "Auction",
     dom: 7,
     description: "Solid home on corner lot. Will be selling by the deed. Auction date TBD — contact us for details.",
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800",
+    image: "https://picsum.photos/seed/listing9/800/500",
   },
   {
     id: 10,
@@ -173,6 +173,6 @@ export const listings: Listing[] = [
     status: "Active",
     dom: 60,
     description: "Large warehouse/flex space in Rockcastle County industrial park. Motivated seller — priced to move.",
-    image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800",
+    image: "https://picsum.photos/seed/listing10/800/500",
   },
 ];
