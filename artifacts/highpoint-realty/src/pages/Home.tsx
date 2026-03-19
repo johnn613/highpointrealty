@@ -27,8 +27,19 @@ export default function Home() {
     <div className="min-h-screen bg-[#F5F5F5]">
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        {/* YouTube background video */}
+        <div className="absolute inset-0 pointer-events-none">
+          <iframe
+            src="https://www.youtube.com/embed/v1ZDDpicXp8?autoplay=1&mute=1&loop=1&playlist=v1ZDDpicXp8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&start=5"
+            title="High Point Realty Background"
+            allow="autoplay; encrypted-media"
+            className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full"
+            style={{ border: "none" }}
+          />
+        </div>
+        {/* Fallback image while video loads */}
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center -z-10"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920')" }}
         />
         <div className="absolute inset-0 bg-[#1B2D4F]/65" />
