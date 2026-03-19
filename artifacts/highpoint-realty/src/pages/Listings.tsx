@@ -1,15 +1,17 @@
 import { useState, useMemo } from "react";
-import { useLocation } from "wouter";
-import { Search, SlidersHorizontal, Grid, Map, ArrowUpDown } from "lucide-react";
+import { Link } from "wouter";
+import { Search, Grid, Map, ArrowUpDown, Gavel } from "lucide-react";
 import ListingCard from "@/components/ListingCard";
-import { listings, type Listing } from "@/data/listings";
+import { listings } from "@/data/listings";
 
-type StatusFilter = "All" | "Active" | "Under Contract" | "Auction";
-type TypeFilter = "All" | "Residential" | "Commercial" | "Land" | "Auction";
+type StatusFilter = "All" | "Active" | "Under Contract";
+type TypeFilter = "All" | "Residential" | "Commercial" | "Land";
 type PriceFilter = "Any" | "Under $100K" | "$100K-$200K" | "$200K-$300K" | "$300K-$500K" | "$500K+";
 type BedsFilter = "Any" | "1+" | "2+" | "3+" | "4+";
 type BathsFilter = "Any" | "1+" | "2+" | "3+";
 type SortBy = "Newest" | "Price Low-High" | "Price High-Low";
+
+const activeListings = listings.filter((l) => l.status !== "Auction");
 
 export default function Listings() {
   const [search, setSearch] = useState("");
@@ -22,7 +24,7 @@ export default function Listings() {
   const [view, setView] = useState<"grid" | "map">("grid");
 
   const filtered = useMemo(() => {
-    let result = [...listings];
+    let result = [...activeListings];
 
     if (search) {
       const q = search.toLowerCase();
@@ -35,11 +37,7 @@ export default function Listings() {
     }
 
     if (type !== "All") {
-      if (type === "Auction") {
-        result = result.filter((l) => l.status === "Auction");
-      } else {
-        result = result.filter((l) => l.type === type);
-      }
+      result = result.filter((l) => l.type === type);
     }
 
     if (status !== "All") {
@@ -80,7 +78,13 @@ export default function Listings() {
       <div className="bg-[#1B2D4F] pt-28 pb-10 px-4">
         <div className="max-w-7xl mx-auto">
           <h1 className="font-serif text-4xl text-white font-bold mb-2">Current Listings</h1>
-          <p className="text-white/60">Find your next property across Central & Eastern Kentucky</p>
+          <p className="text-white/60 mb-5">Find your next property across Central & Eastern Kentucky</p>
+          <Link href="/current-auctions">
+            <div className="inline-flex items-center gap-2 bg-[#C9A84C]/20 border border-[#C9A84C]/40 text-[#C9A84C] text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#C9A84C]/30 transition-colors cursor-pointer">
+              <Gavel size={15} />
+              Looking for auctions? View Current Auctions →
+            </div>
+          </Link>
         </div>
       </div>
 
@@ -122,7 +126,7 @@ export default function Listings() {
               onChange={(e) => setType(e.target.value as TypeFilter)}
               className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none cursor-pointer"
             >
-              {["All", "Residential", "Commercial", "Land", "Auction"].map((opt) => (
+              {["All", "Residential", "Commercial", "Land"].map((opt) => (
                 <option key={opt}>{opt}</option>
               ))}
             </select>
@@ -162,7 +166,7 @@ export default function Listings() {
               onChange={(e) => setStatus(e.target.value as StatusFilter)}
               className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none cursor-pointer"
             >
-              {["All", "Active", "Under Contract", "Auction"].map((opt) => (
+              {["All", "Active", "Under Contract"].map((opt) => (
                 <option key={opt}>{opt === "All" ? "Status: All" : opt}</option>
               ))}
             </select>
@@ -181,7 +185,7 @@ export default function Listings() {
             </div>
 
             <span className="text-xs text-gray-500 ml-2">
-              Showing {filtered.length} of {listings.length}
+              Showing {filtered.length} of {activeListings.length}
             </span>
           </div>
         </div>

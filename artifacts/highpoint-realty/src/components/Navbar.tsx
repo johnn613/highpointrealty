@@ -6,6 +6,7 @@ import logo from "@assets/HPLogos3_(1)_1773882324655.png";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/listings", label: "Listings" },
+  { href: "/current-auctions", label: "Current Auctions" },
   { href: "/past-auctions", label: "Past Auctions" },
   { href: "/property-management", label: "Property Management" },
   { href: "/videos", label: "Videos" },
