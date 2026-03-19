@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Phone, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Menu, X } from "lucide-react";
+import logo from "@assets/HPLogos3_(1)_1773882324655.png";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -41,14 +42,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className="w-10 h-10 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-md">
-              <span className="font-serif text-white font-bold text-lg">HP</span>
-            </div>
-            <div className="hidden sm:block">
-              <div className="font-serif text-white font-bold text-lg leading-tight">High Point</div>
-              <div className="text-[#C9A84C] text-xs tracking-widest uppercase">Realty & Auction</div>
-            </div>
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <img
+              src={logo}
+              alt="High Point Realty & Auction"
+              className="h-10 md:h-12 w-auto brightness-0 invert"
+            />
           </Link>
 
           {/* Desktop Nav */}

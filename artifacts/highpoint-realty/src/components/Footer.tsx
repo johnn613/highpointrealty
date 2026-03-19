@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, Facebook, Instagram, Youtube, MapPin } from "lucide-react";
+import logo from "@assets/HPLogos3_(1)_1773882324655.png";
 
 export default function Footer() {
   return (
@@ -8,14 +9,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-[#C9A84C] flex items-center justify-center shadow-md">
-                <span className="font-serif text-white font-bold text-xl">HP</span>
-              </div>
-              <div>
-                <div className="font-serif font-bold text-xl leading-tight">High Point</div>
-                <div className="text-[#C9A84C] text-xs tracking-widest uppercase">Realty & Auction</div>
-              </div>
+            <div className="mb-4">
+              <img
+                src={logo}
+                alt="High Point Realty & Auction"
+                className="h-16 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               "Your High Point in Real Estate & Auction" — Serving Kentucky with integrity.
