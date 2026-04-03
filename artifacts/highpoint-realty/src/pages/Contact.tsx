@@ -1,37 +1,56 @@
 import { useState } from "react";
 import { Phone, Mail, Clock, MapPin, ChevronDown } from "lucide-react";
 import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
+import kenPhoto from "@assets/team-ken.jpg";
+import johnPhoto from "@assets/team-john.jpg";
+import nancyPhoto from "@assets/team-nancy.jpg";
+import tomPhoto from "@assets/team-tom.jpg";
 
 const agents = [
   {
     name: "Ken DeGrant",
     title: "Broker / Owner",
-    photo: null,
-    seed: "agent-ken",
+    photo: kenPhoto,
     phone: "859-200-2084",
     tel: "8592002084",
     email: "kenneth.degrant@gmail.com",
-    bio: "Broker/Owner of High Point Realty & Auction. Over a decade of experience in residential, commercial, and auction real estate across Central and Eastern Kentucky.",
-  },
-  {
-    name: "John Montgomery",
-    title: "Auctioneer",
-    photo: null,
-    seed: "agent-john",
-    phone: "606-496-6530",
-    tel: "6064966530",
-    email: null,
-    bio: "Licensed Kentucky auctioneer with decades of experience conducting onsite and online real estate auctions. Specializes in maximizing seller value through competitive bidding.",
+    bio: "Broker/Owner of High Point Realty & Auction. Over a decade of experience in residential, commercial, and auction real estate. Currently manages 150+ properties across Central and Eastern Kentucky.",
   },
   {
     name: "David Reichley",
     title: "Realtor / Agent",
     photo: davidPhoto,
-    seed: "agent-david",
     phone: "859-200-2084",
     tel: "8592002084",
     email: "david.reichley@highpointky.com",
-    bio: "A founding member of the High Point team. David brings deep market knowledge and a client-first approach to every transaction across Central and Eastern Kentucky.",
+    bio: "Real Estate Agent and Partner at Wise Builders Group. 20+ years in ministry and community leadership. Specializes in flips, rentals, and residential transactions.",
+  },
+  {
+    name: "Nancy Nichols",
+    title: "Realtor / Agent",
+    photo: nancyPhoto,
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "kenneth.degrant@gmail.com",
+    bio: "Former educator turned realtor. Nancy takes a personalized, patient approach to every transaction — perfect for first-time buyers and anyone who wants a guide they can trust.",
+  },
+  {
+    name: "John Montgomery",
+    title: "Auctioneer",
+    photo: johnPhoto,
+    phone: "606-496-6530",
+    tel: "6064966530",
+    email: null,
+    bio: "Licensed Kentucky auctioneer with decades of experience in onsite and online real estate auctions. Consistently delivers top dollar for sellers.",
+  },
+  {
+    name: "Tom Curry",
+    title: "Auctioneer",
+    photo: tomPhoto,
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: null,
+    bio: "Licensed Kentucky Auctioneer since 2023. BBA from Ohio University with a 49-year career in financial services. Based in California, KY with deep roots in the Kentucky community.",
   },
 ];
 
@@ -63,7 +82,7 @@ export default function Contact() {
                 className="w-full flex items-center gap-5 p-5 hover:bg-gray-50 transition-colors focus:outline-none"
               >
                 <img
-                  src={agent.photo ?? `https://picsum.photos/seed/${agent.seed}/160/160`}
+                  src={agent.photo}
                   alt={agent.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-[#C9A84C]/40 flex-shrink-0"
                 />

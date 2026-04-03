@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Handshake, Gavel, Home, ChevronDown } from "lucide-react";
 import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
+import kenPhoto from "@assets/team-ken.jpg";
+import johnPhoto from "@assets/team-john.jpg";
+import nancyPhoto from "@assets/team-nancy.jpg";
+import tomPhoto from "@assets/team-tom.jpg";
 
 const whyChoose = [
   {
@@ -30,35 +34,47 @@ const team = [
   {
     name: "Ken DeGrant",
     title: "Broker / Owner",
-    initials: "KD",
-    photo: null,
-    seed: "agent-ken",
+    photo: kenPhoto,
     phone: "859-200-2084",
     tel: "8592002084",
     email: "kenneth.degrant@gmail.com",
-    bio: "Ken has been serving Kentucky buyers and sellers for over a decade, specializing in residential, commercial, and auction real estate. As the Broker/Owner of High Point Realty & Auction, Ken has built a reputation for honesty, hard work, and results.\n\nHis deep roots in Central and Eastern Kentucky give him an unmatched understanding of local markets, communities, and property values. When you work with Ken, you're working with someone who treats every transaction as if it were his own.",
-  },
-  {
-    name: "John Montgomery",
-    title: "Auctioneer",
-    initials: "JM",
-    photo: null,
-    seed: "agent-john",
-    phone: "606-496-6530",
-    tel: "6064966530",
-    email: null,
-    bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers. John is passionate about making the auction process transparent, competitive, and successful.",
+    bio: "Ken is the Broker and Owner of High Point Realty & Auction, based in Richmond, KY. He has been in the real estate industry for more than 8 years and currently manages over 150 properties. In addition to residential and commercial transactions, Ken is a licensed auctioneer — offering charity benefit auctions, estate sales, and real estate auctions to best serve his clients and give back to the community.\n\nKen is driven by his family and fueled by the satisfaction of helping every client he can.",
   },
   {
     name: "David Reichley",
     title: "Realtor / Agent",
-    initials: "DR",
     photo: davidPhoto,
-    seed: "agent-david",
     phone: "859-200-2084",
     tel: "8592002084",
     email: "david.reichley@highpointky.com",
-    bio: "David has been a cornerstone of the High Point Realty & Auction team since the very beginning. With a deep commitment to his clients and an encyclopedic knowledge of the Kentucky real estate market, David consistently delivers results whether buying, selling, or managing investment properties.\n\nHis approachable style and tireless work ethic have earned him a loyal following across Central and Eastern Kentucky. David takes pride in guiding clients through every step of the process with clarity and confidence.",
+    bio: "David brings a Business Management degree from Palm Beach Atlantic University and 20+ years of experience in ministry and pastoral work. He recently obtained his Real Estate License and is also a Partner at Wise Builders Group, LLC, where he focuses on flips, renovations, rentals, and property investment.\n\nCommunity and teamwork have always defined David's life — from sports teams and community groups to growing up in a family of 7 kids. He channels that energy into every client relationship. His best work, he'll tell you, is his 25-year marriage to Courtney and their 4 kids.",
+  },
+  {
+    name: "Nancy Nichols",
+    title: "Realtor / Agent",
+    photo: nancyPhoto,
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "kenneth.degrant@gmail.com",
+    bio: "Nancy brings a unique perspective to real estate, having transitioned from a career in education. As a former teacher, she understands that no two clients — like no two students — are the same.\n\nShe takes a personalized approach to every transaction, whether you're a first-time buyer, a growing family, or an empty-nester. Her commitment is to make your journey to homeownership as smooth and enjoyable as possible.",
+  },
+  {
+    name: "John Montgomery",
+    title: "Auctioneer",
+    photo: johnPhoto,
+    phone: "606-496-6530",
+    tel: "6064966530",
+    email: null,
+    bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers.",
+  },
+  {
+    name: "Tom Curry",
+    title: "Auctioneer",
+    photo: tomPhoto,
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: null,
+    bio: "Tom earned a BBA from Ohio University and spent 49 years in financial services before becoming a licensed Kentucky Auctioneer in January 2023. He and his wife Helen live on a small farm in California, KY where they breed and show American Quarter Horses.\n\nA longtime leader in the Kentucky 4H Equine program and active community member, Tom brings professionalism, warmth, and deep Kentucky roots to every auction he calls.",
   },
 ];
 
@@ -112,7 +128,7 @@ export default function About() {
                   >
                     <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-[#C9A84C]/50 shadow-lg mb-4">
                       <img
-                        src={agent.photo ?? `https://picsum.photos/seed/${agent.seed}/200/200`}
+                        src={agent.photo}
                         alt={agent.name}
                         className="w-full h-full object-cover"
                       />
