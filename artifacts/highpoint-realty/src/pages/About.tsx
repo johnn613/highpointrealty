@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { Link } from "wouter";
-import { Phone, Award, MapPin, Handshake, Gavel, Home, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Handshake, Gavel, Home, ChevronDown } from "lucide-react";
 
 const whyChoose = [
   {
@@ -24,7 +25,42 @@ const whyChoose = [
   },
 ];
 
+const team = [
+  {
+    name: "Ken DeGrant",
+    title: "Broker / Owner",
+    initials: "KD",
+    seed: "agent-ken",
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "kenneth.degrant@gmail.com",
+    bio: "Ken has been serving Kentucky buyers and sellers for over a decade, specializing in residential, commercial, and auction real estate. As the Broker/Owner of High Point Realty & Auction, Ken has built a reputation for honesty, hard work, and results.\n\nHis deep roots in Central and Eastern Kentucky give him an unmatched understanding of local markets, communities, and property values. When you work with Ken, you're working with someone who treats every transaction as if it were his own.",
+  },
+  {
+    name: "John Montgomery",
+    title: "Auctioneer",
+    initials: "JM",
+    seed: "agent-john",
+    phone: "606-496-6530",
+    tel: "6064966530",
+    email: null,
+    bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers. John is passionate about making the auction process transparent, competitive, and successful.",
+  },
+  {
+    name: "David Reichley",
+    title: "Realtor / Agent",
+    initials: "DR",
+    seed: "agent-david",
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "david.reichley@highpointky.com",
+    bio: "David has been a cornerstone of the High Point Realty & Auction team since the very beginning. With a deep commitment to his clients and an encyclopedic knowledge of the Kentucky real estate market, David consistently delivers results whether buying, selling, or managing investment properties.\n\nHis approachable style and tireless work ethic have earned him a loyal following across Central and Eastern Kentucky. David takes pride in guiding clients through every step of the process with clarity and confidence.",
+  },
+];
+
 export default function About() {
+  const [expanded, setExpanded] = useState<string | null>(null);
+
   return (
     <div className="min-h-screen bg-[#F5F5F5]">
       {/* Header */}
@@ -59,63 +95,61 @@ export default function About() {
             <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Meet the Team</h2>
             <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full" />
           </div>
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {[
-              {
-                name: "Ken DeGrant",
-                title: "Broker/Owner",
-                initials: "KD",
-                phone: "859-200-2084",
-                tel: "8592002084",
-                email: "ken@highpointky.com",
-                bio: `Ken has been serving Kentucky buyers and sellers for over a decade, specializing in residential, commercial, and auction real estate. As the Broker/Owner of High Point Realty & Auction, Ken has built a reputation for honesty, hard work, and results.\n\nHis deep roots in Central and Eastern Kentucky give him an unmatched understanding of local markets, communities, and property values. When you work with Ken, you're working with someone who treats every transaction as if it were his own.`,
-              },
-              {
-                name: "John Montgomery",
-                title: "Auctioneer",
-                initials: "JM",
-                phone: "606-496-6530",
-                tel: "6064966530",
-                email: null,
-                bio: `John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers. John is passionate about making the auction process transparent, competitive, and successful.`,
-              },
-            ].map((agent) => (
-              <div key={agent.name} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                <div className="bg-[#1B2D4F] p-8 text-center">
-                  <div className="w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-[#C9A84C]/50 shadow-lg mb-4">
-                    <img
-                      src={`https://via.placeholder.com/300x300?text=${agent.initials}`}
-                      alt={agent.name}
-                      className="w-full h-full object-cover"
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {team.map((agent) => {
+              const isOpen = expanded === agent.name;
+              return (
+                <div key={agent.name} className="bg-white rounded-xl overflow-hidden shadow-lg">
+                  {/* Photo + Header — always visible, clickable */}
+                  <button
+                    className="w-full text-left bg-[#1B2D4F] p-8 flex flex-col items-center focus:outline-none"
+                    onClick={() => setExpanded(isOpen ? null : agent.name)}
+                  >
+                    <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-[#C9A84C]/50 shadow-lg mb-4">
+                      <img
+                        src={`https://picsum.photos/seed/${agent.seed}/200/200`}
+                        alt={agent.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="font-serif text-xl font-bold text-white mb-1 text-center">{agent.name}</h3>
+                    <p className="text-[#C9A84C] text-xs font-semibold uppercase tracking-widest text-center mb-3">{agent.title}</p>
+                    <ChevronDown
+                      size={18}
+                      className={`text-white/50 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
                     />
+                  </button>
+
+                  {/* Expandable Bio + Contact */}
+                  <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
+                    <div className="p-6">
+                      {agent.bio.split("\n\n").map((para, i) => (
+                        <p key={i} className="text-gray-600 text-sm leading-relaxed mb-3 last:mb-0">{para}</p>
+                      ))}
+                      <div className="flex flex-col gap-2 mt-5 pt-5 border-t border-gray-100">
+                        <a
+                          href={`tel:${agent.tel}`}
+                          className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-2.5 rounded-lg hover:bg-[#162540] transition-colors text-sm"
+                        >
+                          <Phone size={14} />
+                          {agent.phone}
+                        </a>
+                        {agent.email && (
+                          <a
+                            href={`mailto:${agent.email}`}
+                            className="flex items-center justify-center gap-2 border border-[#C9A84C] text-[#9b7d34] font-semibold py-2.5 rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors text-xs"
+                          >
+                            <Mail size={13} />
+                            {agent.email}
+                          </a>
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-white mb-1">{agent.name}</h3>
-                  <p className="text-[#C9A84C] text-sm font-semibold uppercase tracking-widest">{agent.title}</p>
                 </div>
-                <div className="p-7">
-                  {agent.bio.split("\n\n").map((para, i) => (
-                    <p key={i} className="text-gray-600 text-sm leading-relaxed mb-4 last:mb-0">{para}</p>
-                  ))}
-                  <div className="flex flex-col gap-2 mt-6 pt-6 border-t border-gray-100">
-                    <a
-                      href={`tel:${agent.tel}`}
-                      className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-3 rounded-lg hover:bg-[#162540] transition-colors"
-                    >
-                      <Phone size={16} />
-                      {agent.phone}
-                    </a>
-                    {agent.email && (
-                      <a
-                        href={`mailto:${agent.email}`}
-                        className="flex items-center justify-center gap-2 border border-[#C9A84C] text-[#9b7d34] font-semibold py-3 rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors text-sm"
-                      >
-                        {agent.email}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

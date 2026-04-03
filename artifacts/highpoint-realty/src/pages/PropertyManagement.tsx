@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Users, CreditCard, Wrench, ClipboardCheck, FileText, BarChart, Phone, CheckCircle } from "lucide-react";
+import { Users, CreditCard, Wrench, ClipboardCheck, FileText, BarChart, Phone, CheckCircle, Home, DollarSign, MapPin, Calendar } from "lucide-react";
 
 const services = [
   {
@@ -43,6 +43,81 @@ const benefits = [
   "Owner portal with real-time reporting",
 ];
 
+const rentals = [
+  {
+    id: 1,
+    address: "214 Chestnut St",
+    city: "Richmond, KY 40475",
+    beds: 3,
+    baths: 1,
+    sqft: 1200,
+    rent: 950,
+    available: "Available Now",
+    type: "House",
+    image: "https://picsum.photos/seed/rental1/600/400",
+  },
+  {
+    id: 2,
+    address: "88 Maple Ave",
+    city: "Berea, KY 40403",
+    beds: 2,
+    baths: 1,
+    sqft: 900,
+    rent: 750,
+    available: "Available Now",
+    type: "Apartment",
+    image: "https://picsum.photos/seed/rental2/600/400",
+  },
+  {
+    id: 3,
+    address: "501 Pine Creek Rd",
+    city: "Irvine, KY 40336",
+    beds: 3,
+    baths: 2,
+    sqft: 1450,
+    rent: 1100,
+    available: "Available May 1",
+    type: "House",
+    image: "https://picsum.photos/seed/rental3/600/400",
+  },
+  {
+    id: 4,
+    address: "12 Industrial Blvd",
+    city: "Mt Vernon, KY 40456",
+    beds: 0,
+    baths: 1,
+    sqft: 2400,
+    rent: 1800,
+    available: "Available Now",
+    type: "Commercial",
+    image: "https://picsum.photos/seed/rental4/600/400",
+  },
+  {
+    id: 5,
+    address: "330 College St",
+    city: "Berea, KY 40403",
+    beds: 2,
+    baths: 1,
+    sqft: 850,
+    rent: 700,
+    available: "Available Now",
+    type: "Apartment",
+    image: "https://picsum.photos/seed/rental5/600/400",
+  },
+  {
+    id: 6,
+    address: "776 Furnace Fork Rd",
+    city: "Stanton, KY 40380",
+    beds: 4,
+    baths: 2,
+    sqft: 1800,
+    rent: 1250,
+    available: "Available June 1",
+    type: "House",
+    image: "https://picsum.photos/seed/rental6/600/400",
+  },
+];
+
 export default function PropertyManagement() {
   return (
     <div className="min-h-screen bg-[#F5F5F5]">
@@ -57,6 +132,61 @@ export default function PropertyManagement() {
           <p className="text-white/60 text-lg max-w-2xl mx-auto">
             Let High Point Realty & Auction handle your investment properties with professionalism and care, maximizing your returns and minimizing your stress.
           </p>
+        </div>
+      </div>
+
+      {/* Properties For Rent */}
+      <div className="bg-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Properties For Rent</h2>
+            <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-4" />
+            <p className="text-gray-500 max-w-xl mx-auto text-sm">
+              Currently managed rental properties available across Central & Eastern Kentucky.
+              Contact Ken to schedule a showing.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {rentals.map((r) => (
+              <div key={r.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-gray-100">
+                <div className="relative aspect-video overflow-hidden">
+                  <img src={r.image} alt={r.address} className="w-full h-full object-cover" />
+                  <div className="absolute top-3 left-3">
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${r.available === "Available Now" ? "bg-green-500 text-white" : "bg-[#C9A84C] text-white"}`}>
+                      {r.available}
+                    </span>
+                  </div>
+                  <div className="absolute top-3 right-3 bg-white/90 text-[#1B2D4F] text-xs font-semibold px-2 py-1 rounded-full">
+                    {r.type}
+                  </div>
+                </div>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="font-bold text-2xl text-[#1B2D4F]">${r.rent.toLocaleString()}<span className="text-sm font-normal text-gray-400">/mo</span></span>
+                  </div>
+                  <div className="flex items-center gap-1 text-gray-500 text-sm mb-3">
+                    <MapPin size={12} />
+                    <span className="truncate">{r.address}, {r.city}</span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 border-t border-gray-100 pt-3">
+                    {r.beds > 0 && <span className="flex items-center gap-1"><Home size={13} />{r.beds} bd</span>}
+                    {r.baths > 0 && <span>{r.baths} ba</span>}
+                    {r.sqft > 0 && <span>{r.sqft.toLocaleString()} sqft</span>}
+                  </div>
+                </div>
+                <div className="px-4 pb-4">
+                  <a
+                    href="tel:8592002084"
+                    className="w-full flex items-center justify-center gap-2 bg-[#1B2D4F] hover:bg-[#162540] text-white font-semibold py-2.5 rounded-lg transition-colors text-sm"
+                  >
+                    <Phone size={14} />
+                    Schedule a Showing
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -104,7 +234,7 @@ export default function PropertyManagement() {
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800"
+                  src="https://picsum.photos/seed/mgmt-hero/800/800"
                   alt="Property Management"
                   className="w-full h-full object-cover"
                 />

@@ -183,7 +183,7 @@ export default function ListingDetail() {
                   Call: 859-200-2084
                 </a>
                 <a
-                  href={`mailto:ken@highpointky.com?subject=Inquiry: ${listing.address}`}
+                  href={`mailto:kenneth.degrant@gmail.com?subject=Inquiry: ${listing.address}`}
                   className="w-full flex items-center justify-center gap-2 border-2 border-[#C9A84C] text-[#C9A84C] font-semibold py-3 rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors"
                 >
                   <Mail size={16} />

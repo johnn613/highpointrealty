@@ -1,10 +1,41 @@
 import { useState } from "react";
-import { Phone, Mail, Clock, MapPin, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, Clock, MapPin, Send, CheckCircle, ChevronDown } from "lucide-react";
+
+const agents = [
+  {
+    name: "Ken DeGrant",
+    title: "Broker / Owner",
+    seed: "agent-ken",
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "kenneth.degrant@gmail.com",
+    bio: "Broker/Owner of High Point Realty & Auction. Over a decade of experience in residential, commercial, and auction real estate across Central and Eastern Kentucky.",
+  },
+  {
+    name: "John Montgomery",
+    title: "Auctioneer",
+    seed: "agent-john",
+    phone: "606-496-6530",
+    tel: "6064966530",
+    email: null,
+    bio: "Licensed Kentucky auctioneer with decades of experience conducting onsite and online real estate auctions. Specializes in maximizing seller value through competitive bidding.",
+  },
+  {
+    name: "David Reichley",
+    title: "Realtor / Agent",
+    seed: "agent-david",
+    phone: "859-200-2084",
+    tel: "8592002084",
+    email: "david.reichley@highpointky.com",
+    bio: "A founding member of the High Point team. David brings deep market knowledge and a client-first approach to every transaction across Central and Eastern Kentucky.",
+  },
+];
 
 export default function Contact() {
   const [subject, setSubject] = useState("Buy");
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [expandedAgent, setExpandedAgent] = useState<string | null>("Ken DeGrant");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -125,72 +156,89 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Contact Info + Map */}
+          {/* Right Column */}
           <div className="space-y-6">
-            {/* Ken */}
+            {/* Agent Cards — photo tap to expand */}
             <div className="bg-white rounded-xl shadow-md p-6">
-              <h3 className="font-serif text-xl font-bold text-[#1B2D4F] mb-5">Contact Information</h3>
-              <div className="space-y-5">
-                <div className="flex items-start gap-4 p-4 bg-[#F5F5F5] rounded-lg">
-                  <img src="https://via.placeholder.com/60x60?text=KD" alt="Ken DeGrant" className="w-12 h-12 rounded-full border-2 border-[#C9A84C]/30" />
-                  <div>
-                    <div className="font-bold text-[#1B2D4F]">Ken DeGrant</div>
-                    <div className="text-[#C9A84C] text-xs font-semibold uppercase tracking-wide mb-2">Broker/Owner</div>
-                    <a href="tel:8592002084" className="flex items-center gap-2 text-gray-600 hover:text-[#C9A84C] text-sm transition-colors mb-1">
-                      <Phone size={14} /> 859-200-2084
-                    </a>
-                    <a href="mailto:ken@highpointky.com" className="flex items-center gap-2 text-gray-600 hover:text-[#C9A84C] text-sm transition-colors">
-                      <Mail size={14} /> ken@highpointky.com
-                    </a>
-                  </div>
-                </div>
+              <h3 className="font-serif text-xl font-bold text-[#1B2D4F] mb-5">Our Team</h3>
+              <div className="space-y-3">
+                {agents.map((agent) => {
+                  const isOpen = expandedAgent === agent.name;
+                  return (
+                    <div key={agent.name} className="border border-gray-100 rounded-xl overflow-hidden">
+                      {/* Tap row */}
+                      <button
+                        onClick={() => setExpandedAgent(isOpen ? null : agent.name)}
+                        className="w-full flex items-center gap-4 p-4 hover:bg-gray-50 transition-colors focus:outline-none"
+                      >
+                        <img
+                          src={`https://picsum.photos/seed/${agent.seed}/120/120`}
+                          alt={agent.name}
+                          className="w-14 h-14 rounded-full object-cover border-2 border-[#C9A84C]/40 flex-shrink-0"
+                        />
+                        <div className="text-left flex-1 min-w-0">
+                          <div className="font-bold text-[#1B2D4F] truncate">{agent.name}</div>
+                          <div className="text-[#C9A84C] text-xs font-semibold uppercase tracking-wide">{agent.title}</div>
+                        </div>
+                        <ChevronDown
+                          size={18}
+                          className={`text-gray-400 flex-shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                        />
+                      </button>
 
-                <div className="flex items-start gap-4 p-4 bg-[#F5F5F5] rounded-lg">
-                  <img src="https://via.placeholder.com/60x60?text=JM" alt="John Montgomery" className="w-12 h-12 rounded-full border-2 border-[#C9A84C]/30" />
-                  <div>
-                    <div className="font-bold text-[#1B2D4F]">John Montgomery</div>
-                    <div className="text-[#C9A84C] text-xs font-semibold uppercase tracking-wide mb-2">Auctioneer</div>
-                    <a href="tel:6064966530" className="flex items-center gap-2 text-gray-600 hover:text-[#C9A84C] text-sm transition-colors">
-                      <Phone size={14} /> 606-496-6530
-                    </a>
-                  </div>
-                </div>
+                      {/* Expanded dropdown */}
+                      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}>
+                        <div className="px-4 pb-4 border-t border-gray-100 pt-3">
+                          <p className="text-gray-600 text-sm leading-relaxed mb-3">{agent.bio}</p>
+                          <div className="flex flex-col gap-2">
+                            <a
+                              href={`tel:${agent.tel}`}
+                              className="flex items-center gap-2 bg-[#1B2D4F] text-white font-semibold py-2.5 px-4 rounded-lg hover:bg-[#162540] transition-colors text-sm"
+                            >
+                              <Phone size={14} />
+                              {agent.phone}
+                            </a>
+                            {agent.email && (
+                              <a
+                                href={`mailto:${agent.email}`}
+                                className="flex items-center gap-2 border border-[#C9A84C] text-[#9b7d34] font-semibold py-2.5 px-4 rounded-lg hover:bg-[#C9A84C] hover:text-white transition-colors text-sm"
+                              >
+                                <Mail size={14} />
+                                {agent.email}
+                              </a>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
 
-                <div className="flex items-center gap-3 text-gray-600 text-sm">
-                  <div className="w-10 h-10 bg-[#1B2D4F]/5 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin size={18} className="text-[#C9A84C]" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#1B2D4F] text-sm">Service Area</div>
-                    <div>Serving Central & Eastern Kentucky</div>
-                  </div>
+            {/* Info */}
+            <div className="bg-white rounded-xl shadow-md p-6 space-y-4">
+              <div className="flex items-center gap-3 text-gray-600 text-sm">
+                <div className="w-10 h-10 bg-[#1B2D4F]/5 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <MapPin size={18} className="text-[#C9A84C]" />
                 </div>
-
-                <div className="flex items-center gap-3 text-gray-600 text-sm">
-                  <div className="w-10 h-10 bg-[#1B2D4F]/5 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock size={18} className="text-[#C9A84C]" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-[#1B2D4F] text-sm">Business Hours</div>
-                    <div>Mon–Fri 8am–6pm</div>
-                    <div>Sat 9am–2pm</div>
-                  </div>
+                <div>
+                  <div className="font-semibold text-[#1B2D4F] text-sm">Service Area</div>
+                  <div>Serving Central & Eastern Kentucky</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-3 text-gray-600 text-sm">
+                <div className="w-10 h-10 bg-[#1B2D4F]/5 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <Clock size={18} className="text-[#C9A84C]" />
+                </div>
+                <div>
+                  <div className="font-semibold text-[#1B2D4F] text-sm">Business Hours</div>
+                  <div>Mon–Fri 8am–6pm · Sat 9am–2pm</div>
                 </div>
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
-              <div className="h-64 bg-gray-100 flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <MapPin size={40} className="mx-auto mb-3 opacity-30" />
-                  <p className="font-medium text-gray-500">Map Coming Soon</p>
-                  <p className="text-sm mt-1">Serving Central & Eastern Kentucky</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Quick Actions */}
+            {/* Quick call/email buttons */}
             <div className="grid grid-cols-2 gap-4">
               <a
                 href="tel:8592002084"
@@ -201,12 +249,12 @@ export default function Contact() {
                 <span className="text-[#C9A84C] text-xs font-bold">859-200-2084</span>
               </a>
               <a
-                href="mailto:ken@highpointky.com"
+                href="mailto:kenneth.degrant@gmail.com"
                 className="flex flex-col items-center justify-center gap-2 bg-[#C9A84C] text-white font-semibold py-5 rounded-xl hover:bg-[#b8933e] transition-colors text-center"
               >
                 <Mail size={22} />
                 <span className="text-sm">Email Ken</span>
-                <span className="text-xs text-white/80">ken@highpointky.com</span>
+                <span className="text-xs text-white/80">kenneth.degrant@gmail.com</span>
               </a>
             </div>
           </div>
