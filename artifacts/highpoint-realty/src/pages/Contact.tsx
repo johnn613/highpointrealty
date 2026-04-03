@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Phone, Mail, Clock, MapPin, ChevronDown } from "lucide-react";
+import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
 
 const agents = [
   {
     name: "Ken DeGrant",
     title: "Broker / Owner",
+    photo: null,
     seed: "agent-ken",
     phone: "859-200-2084",
     tel: "8592002084",
@@ -14,6 +16,7 @@ const agents = [
   {
     name: "John Montgomery",
     title: "Auctioneer",
+    photo: null,
     seed: "agent-john",
     phone: "606-496-6530",
     tel: "6064966530",
@@ -23,6 +26,7 @@ const agents = [
   {
     name: "David Reichley",
     title: "Realtor / Agent",
+    photo: davidPhoto,
     seed: "agent-david",
     phone: "859-200-2084",
     tel: "8592002084",
@@ -59,7 +63,7 @@ export default function Contact() {
                 className="w-full flex items-center gap-5 p-5 hover:bg-gray-50 transition-colors focus:outline-none"
               >
                 <img
-                  src={`https://picsum.photos/seed/${agent.seed}/160/160`}
+                  src={agent.photo ?? `https://picsum.photos/seed/${agent.seed}/160/160`}
                   alt={agent.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-[#C9A84C]/40 flex-shrink-0"
                 />

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Handshake, Gavel, Home, ChevronDown } from "lucide-react";
+import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
 
 const whyChoose = [
   {
@@ -30,6 +31,7 @@ const team = [
     name: "Ken DeGrant",
     title: "Broker / Owner",
     initials: "KD",
+    photo: null,
     seed: "agent-ken",
     phone: "859-200-2084",
     tel: "8592002084",
@@ -40,6 +42,7 @@ const team = [
     name: "John Montgomery",
     title: "Auctioneer",
     initials: "JM",
+    photo: null,
     seed: "agent-john",
     phone: "606-496-6530",
     tel: "6064966530",
@@ -50,6 +53,7 @@ const team = [
     name: "David Reichley",
     title: "Realtor / Agent",
     initials: "DR",
+    photo: davidPhoto,
     seed: "agent-david",
     phone: "859-200-2084",
     tel: "8592002084",
@@ -108,7 +112,7 @@ export default function About() {
                   >
                     <div className="w-28 h-28 mx-auto rounded-full overflow-hidden border-4 border-[#C9A84C]/50 shadow-lg mb-4">
                       <img
-                        src={`https://picsum.photos/seed/${agent.seed}/200/200`}
+                        src={agent.photo ?? `https://picsum.photos/seed/${agent.seed}/200/200`}
                         alt={agent.name}
                         className="w-full h-full object-cover"
                       />
