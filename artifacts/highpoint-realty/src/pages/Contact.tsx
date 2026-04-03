@@ -4,7 +4,6 @@ import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1
 import kenPhoto from "@assets/team-ken.jpg";
 import johnPhoto from "@assets/team-john.jpg";
 import nancyPhoto from "@assets/team-nancy.jpg";
-import tomPhoto from "@assets/team-tom.jpg";
 
 const agents = [
   {
@@ -42,15 +41,7 @@ const agents = [
     tel: "6064966530",
     email: null,
     bio: "Licensed Kentucky auctioneer with decades of experience in onsite and online real estate auctions. Consistently delivers top dollar for sellers.",
-  },
-  {
-    name: "Tom Curry",
-    title: "Auctioneer",
-    photo: tomPhoto,
-    phone: "859-200-2084",
-    tel: "8592002084",
-    email: null,
-    bio: "Licensed Kentucky Auctioneer since 2023. BBA from Ohio University with a 49-year career in financial services. Based in California, KY with deep roots in the Kentucky community.",
+    photoPosition: "top",
   },
 ];
 
@@ -85,6 +76,7 @@ export default function Contact() {
                   src={agent.photo}
                   alt={agent.name}
                   className="w-16 h-16 rounded-full object-cover border-2 border-[#C9A84C]/40 flex-shrink-0"
+                  style={{ objectPosition: (agent as any).photoPosition ?? "center" }}
                 />
                 <div className="text-left flex-1 min-w-0">
                   <div className="font-serif text-xl font-bold text-[#1B2D4F]">{agent.name}</div>

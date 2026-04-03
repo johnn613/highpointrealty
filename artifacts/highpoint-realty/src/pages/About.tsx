@@ -5,7 +5,6 @@ import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1
 import kenPhoto from "@assets/team-ken.jpg";
 import johnPhoto from "@assets/team-john.jpg";
 import nancyPhoto from "@assets/team-nancy.jpg";
-import tomPhoto from "@assets/team-tom.jpg";
 
 const whyChoose = [
   {
@@ -66,15 +65,7 @@ const team = [
     tel: "6064966530",
     email: null,
     bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers.",
-  },
-  {
-    name: "Tom Curry",
-    title: "Auctioneer",
-    photo: tomPhoto,
-    phone: "859-200-2084",
-    tel: "8592002084",
-    email: null,
-    bio: "Tom earned a BBA from Ohio University and spent 49 years in financial services before becoming a licensed Kentucky Auctioneer in January 2023. He and his wife Helen live on a small farm in California, KY where they breed and show American Quarter Horses.\n\nA longtime leader in the Kentucky 4H Equine program and active community member, Tom brings professionalism, warmth, and deep Kentucky roots to every auction he calls.",
+    photoPosition: "top",
   },
 ];
 
@@ -131,6 +122,7 @@ export default function About() {
                         src={agent.photo}
                         alt={agent.name}
                         className="w-full h-full object-cover"
+                        style={{ objectPosition: agent.photoPosition ?? "center" }}
                       />
                     </div>
                     <h3 className="font-serif text-xl font-bold text-white mb-1 text-center">{agent.name}</h3>
