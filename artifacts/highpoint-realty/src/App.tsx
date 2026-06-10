@@ -7,7 +7,6 @@ import Listings from "@/pages/Listings";
 import ListingDetail from "@/pages/ListingDetail";
 import CurrentAuctions from "@/pages/CurrentAuctions";
 import PastAuctions from "@/pages/PastAuctions";
-import PropertyManagement from "@/pages/PropertyManagement";
 import Videos from "@/pages/Videos";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
@@ -25,7 +24,6 @@ function Router() {
         <Route path="/listings/:id" component={ListingDetail} />
         <Route path="/current-auctions" component={CurrentAuctions} />
         <Route path="/past-auctions" component={PastAuctions} />
-        <Route path="/property-management" component={PropertyManagement} />
         <Route path="/videos" component={Videos} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />

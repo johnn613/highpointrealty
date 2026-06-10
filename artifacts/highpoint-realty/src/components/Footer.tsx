@@ -40,7 +40,6 @@ export default function Footer() {
                 ["Home", "/"],
                 ["Current Listings", "/listings"],
                 ["Past Auctions", "/past-auctions"],
-                ["Property Management", "/property-management"],
                 ["Videos", "/videos"],
                 ["About Us", "/about"],
                 ["Contact", "/contact"],

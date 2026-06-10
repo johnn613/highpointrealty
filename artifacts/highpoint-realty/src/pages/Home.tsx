@@ -51,7 +51,7 @@ export default function Home() {
             High Point Realty<br /><span className="text-[#C9A84C]">& Auction</span>
           </h1>
           <p className="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Serving Kentucky with integrity — real estate sales, auctions, and property management.
+            Serving Kentucky with integrity — real estate sales and auctions.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/listings">
@@ -114,12 +114,6 @@ export default function Home() {
                 title: "Auction Services",
                 desc: "Professional onsite and online auctions that maximize your property's value. John Montgomery brings decades of Kentucky auction experience.",
                 href: "/listings?filter=Auction",
-              },
-              {
-                icon: <Key className="w-8 h-8 text-[#C9A84C]" />,
-                title: "Property Management",
-                desc: "Full-service property management including tenant screening, rent collection, maintenance coordination, and financial reporting.",
-                href: "/property-management",
               },
             ].map((service) => (
               <Link key={service.title} href={service.href}>

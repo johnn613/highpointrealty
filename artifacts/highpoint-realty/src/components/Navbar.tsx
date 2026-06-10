@@ -8,7 +8,6 @@ const navLinks = [
   { href: "/listings", label: "Listings" },
   { href: "/current-auctions", label: "Current Auctions" },
   { href: "/past-auctions", label: "Past Auctions" },
-  { href: "/property-management", label: "Property Management" },
   { href: "/videos", label: "Videos" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
