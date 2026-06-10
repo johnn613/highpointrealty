@@ -1,7 +1,8 @@
 import { useState, useMemo } from "react";
-import { Search, Play } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { Search, Play, RefreshCw, Wifi, WifiOff } from "lucide-react";
 import VideoModal from "@/components/VideoModal";
-import { videos, type Video } from "@/data/videos";
+import { videos as staticVideos, type Video } from "@/data/videos";
 
 type Category = "All" | "Property Tours" | "Auction Previews" | "Market Updates" | "Tips & Advice";
 
@@ -12,12 +13,50 @@ const categoryColors: Record<string, string> = {
   "Tips & Advice": "bg-purple-100 text-purple-700",
 };
 
+interface FeedVideo {
+  youtubeId: string;
+  title: string;
+  published: string;
+  category: Video["category"];
+}
+
+async function fetchYoutubeFeed(): Promise<FeedVideo[]> {
+  const res = await fetch("/api/youtube-feed");
+  if (!res.ok) throw new Error("Feed unavailable");
+  const data = await res.json();
+  return data.videos as FeedVideo[];
+}
+
+function feedToVideo(v: FeedVideo, id: number): Video {
+  return { id, youtubeId: v.youtubeId, title: v.title, category: v.category, date: v.published };
+}
+
 export default function Videos() {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState<Category>("All");
   const [modal, setModal] = useState<Video | null>(null);
 
   const categories: Category[] = ["All", "Property Tours", "Auction Previews", "Market Updates", "Tips & Advice"];
+
+  const {
+    data: feedVideos,
+    isLoading,
+    isError,
+    refetch,
+    isRefetching,
+  } = useQuery({
+    queryKey: ["youtube-feed"],
+    queryFn: fetchYoutubeFeed,
+    staleTime: 10 * 60 * 1000,
+    retry: 1,
+  });
+
+  const videos: Video[] = useMemo(() => {
+    if (feedVideos && feedVideos.length > 0) {
+      return feedVideos.map((v, i) => feedToVideo(v, i + 1));
+    }
+    return staticVideos;
+  }, [feedVideos]);
 
   const filtered = useMemo(() => {
     let result = [...videos];
@@ -29,7 +68,7 @@ export default function Videos() {
       result = result.filter((v) => v.category === category);
     }
     return result;
-  }, [search, category]);
+  }, [videos, search, category]);
 
   return (
     <div className="min-h-screen bg-[#F5F5F5]">
@@ -58,7 +97,33 @@ export default function Videos() {
                 className="flex-1 bg-transparent text-sm outline-none text-gray-700 placeholder-gray-400"
               />
             </div>
+
+            {/* Live status indicator */}
+            <div className="flex items-center gap-2 text-xs text-gray-500 flex-shrink-0">
+              {isLoading || isRefetching ? (
+                <span className="flex items-center gap-1.5 text-[#C9A84C]">
+                  <RefreshCw size={13} className="animate-spin" />
+                  Syncing…
+                </span>
+              ) : isError ? (
+                <button
+                  onClick={() => refetch()}
+                  className="flex items-center gap-1.5 text-red-400 hover:text-red-600 transition-colors"
+                  title="Retry"
+                >
+                  <WifiOff size={13} />
+                  Retry
+                </button>
+              ) : (
+                <span className="flex items-center gap-1.5 text-green-600">
+                  <Wifi size={13} />
+                  Live
+                </span>
+              )}
+              <span className="text-gray-400">{videos.length} videos</span>
+            </div>
           </div>
+
           <div className="flex items-center gap-2 flex-wrap">
             {categories.map((cat) => (
               <button
@@ -79,12 +144,29 @@ export default function Videos() {
 
       {/* Video Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {filtered.length === 0 ? (
+        {isLoading ? (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-xl overflow-hidden shadow-md animate-pulse">
+                <div className="aspect-video bg-gray-200" />
+                <div className="p-5 space-y-3">
+                  <div className="h-3 bg-gray-200 rounded w-1/3" />
+                  <div className="h-4 bg-gray-200 rounded w-4/5" />
+                  <div className="h-4 bg-gray-200 rounded w-3/5" />
+                  <div className="h-10 bg-gray-100 rounded-lg mt-4" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : filtered.length === 0 ? (
           <div className="text-center py-20 text-gray-400">No videos match your search.</div>
         ) : (
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {filtered.map((video) => (
-              <div key={video.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div
+                key={video.youtubeId}
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
                 <div
                   className="relative aspect-video cursor-pointer group"
                   onClick={() => setModal(video)}
