@@ -45,13 +45,17 @@ export default function CurrentAuctions() {
         </div>
       </div>
 
-      {/* HiBid Embed */}
-      <div className="flex-1 w-full">
+      {/* HiBid Embed — header clipped via overflow-hidden + negative margin */}
+      <div className="flex-1 w-full" style={{ overflow: "hidden" }}>
         <iframe
           src={HIBID_URL}
           title="High Point Realty & Auction — HiBid"
           className="w-full border-0"
-          style={{ minHeight: "calc(100vh - 200px)", height: "1200px" }}
+          style={{
+            marginTop: "-260px",
+            height: "calc(100vh + 260px)",
+            minHeight: "1400px",
+          }}
           allow="payment"
           loading="lazy"
         />
