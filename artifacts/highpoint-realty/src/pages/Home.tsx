@@ -1,9 +1,7 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "wouter";
-import { Search, Home as HomeIcon, Gavel, Key, Phone, Play, MapPin, ArrowRight, ChevronRight, CheckCircle } from "lucide-react";
-import ListingCard from "@/components/ListingCard";
+import { Home as HomeIcon, Gavel, Phone, Play, ArrowRight, ChevronRight } from "lucide-react";
 import VideoModal from "@/components/VideoModal";
-import { listings } from "@/data/listings";
 import { videos } from "@/data/videos";
 
 const counties = [
@@ -15,11 +13,7 @@ const counties = [
   { name: "Breathitt", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600" },
 ];
 
-const upcomingAuctions = listings.filter((l) => l.status === "Auction").slice(0, 2);
-const featuredListings = listings.slice(0, 3);
-
 export default function Home() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [videoModal, setVideoModal] = useState<{ youtubeId: string; title: string } | null>(null);
   const teaserVideo = videos[0];
 
@@ -27,7 +21,6 @@ export default function Home() {
     <div className="min-h-screen bg-[#F5F5F5]">
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-        {/* YouTube background video */}
         <div className="absolute inset-0 pointer-events-none">
           <iframe
             src="https://www.youtube.com/embed/v1ZDDpicXp8?autoplay=1&mute=1&loop=1&playlist=v1ZDDpicXp8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&start=5"
@@ -37,7 +30,6 @@ export default function Home() {
             style={{ border: "none" }}
           />
         </div>
-        {/* Fallback image while video loads */}
         <div
           className="absolute inset-0 bg-cover bg-center -z-10"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920')" }}
@@ -56,37 +48,18 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/listings">
               <button className="w-full sm:w-auto bg-[#C9A84C] hover:bg-[#b8933e] text-white font-semibold px-8 py-4 rounded-lg transition-all duration-200 hover:shadow-xl hover:-translate-y-0.5 flex items-center gap-2 justify-center">
-                View Current Listings
+                View Listings
                 <ArrowRight size={18} />
               </button>
             </Link>
-            <Link href="/listings?filter=Auction">
+            <Link href="/current-auctions">
               <button className="w-full sm:w-auto border-2 border-white text-white hover:bg-white hover:text-[#1B2D4F] font-semibold px-8 py-4 rounded-lg transition-all duration-200 flex items-center gap-2 justify-center">
-                Upcoming Auctions
+                Current Auctions
                 <Gavel size={18} />
               </button>
             </Link>
           </div>
         </div>
-        {/* Quick Search */}
-        <div className="relative z-10 w-full max-w-2xl mx-auto px-4 mt-12">
-          <div className="bg-white rounded-2xl shadow-2xl p-2 flex gap-2">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search by county, city, or address..."
-              className="flex-1 px-4 py-3 text-gray-700 placeholder-gray-400 outline-none text-sm"
-            />
-            <Link href={`/listings?q=${searchQuery}`}>
-              <button className="bg-[#C9A84C] hover:bg-[#b8933e] text-white px-6 py-3 rounded-xl transition-colors flex items-center gap-2 font-semibold text-sm">
-                <Search size={16} />
-                Search
-              </button>
-            </Link>
-          </div>
-        </div>
-        {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce">
           <div className="w-6 h-10 border-2 border-white/40 rounded-full flex items-start justify-center pt-1.5">
             <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
@@ -101,7 +74,7 @@ export default function Home() {
             <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Our Services</h2>
             <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full" />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
               {
                 icon: <HomeIcon className="w-8 h-8 text-[#C9A84C]" />,
@@ -113,7 +86,7 @@ export default function Home() {
                 icon: <Gavel className="w-8 h-8 text-[#C9A84C]" />,
                 title: "Auction Services",
                 desc: "Professional onsite and online auctions that maximize your property's value. John Montgomery brings decades of Kentucky auction experience.",
-                href: "/listings?filter=Auction",
+                href: "/current-auctions",
               },
             ].map((service) => (
               <Link key={service.title} href={service.href}>
@@ -133,67 +106,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Listings */}
+      {/* Live MLS Coming Soon */}
       <section className="py-20 bg-[#F5F5F5]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Featured Listings</h2>
-            <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full" />
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredListings.map((listing) => (
-              <ListingCard key={listing.id} listing={listing} />
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link href="/listings">
-              <button className="bg-[#1B2D4F] hover:bg-[#162540] text-white font-semibold px-8 py-4 rounded-lg transition-colors flex items-center gap-2 mx-auto">
-                View All Listings <ArrowRight size={18} />
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Upcoming Auctions */}
-      <section className="py-20 bg-[#1B2D4F]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="font-serif text-4xl font-bold text-white mb-4">Upcoming Auctions</h2>
-            <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-4" />
-            <p className="text-white/60 max-w-xl mx-auto">Don't miss these upcoming auction events — register to bid online or attend in person.</p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {upcomingAuctions.map((auction) => (
-              <div key={auction.id} className="bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-colors">
-                <div className="relative aspect-video overflow-hidden">
-                  <img src={auction.image} alt={auction.address} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-[#C9A84C] text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
-                      Onsite & Online Bidding
-                    </span>
-                  </div>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Featured Listings</h2>
+          <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-12" />
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-12">
+            <div className="w-20 h-20 bg-[#1B2D4F]/8 rounded-full flex items-center justify-center mx-auto mb-6">
+              <HomeIcon size={36} className="text-[#1B2D4F]/50" />
+            </div>
+            <h3 className="font-serif text-3xl font-bold text-[#1B2D4F] mb-3">Live MLS Listings Coming Soon</h3>
+            <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-md mx-auto">
+              We're connecting to the MLS to display real-time property listings here. In the meantime,
+              contact our team directly about available properties.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <Link href="/contact">
+                <div className="inline-flex items-center gap-2 bg-[#1B2D4F] hover:bg-[#162540] text-white font-semibold px-6 py-3 rounded-lg transition-colors cursor-pointer text-sm">
+                  Contact Our Team
                 </div>
-                <div className="p-6">
-                  <h3 className="font-serif text-xl text-white font-bold mb-2">{auction.address}</h3>
-                  <p className="text-white/60 text-sm mb-4">{auction.city}</p>
-                  <div className="flex items-center gap-2 mb-4">
-                    <span className="text-[#C9A84C] text-sm font-semibold">📅 {auction.auctionDate}</span>
-                    {auction.auctionTime && <span className="text-white/50 text-sm">at {auction.auctionTime}</span>}
-                  </div>
-                  <p className="text-white/70 text-sm mb-5 leading-relaxed">{auction.description}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#C9A84C] font-bold text-xl">${auction.price.toLocaleString()}</span>
-                    <Link href={`/listings/${auction.id}`}>
-                      <button className="bg-[#C9A84C] hover:bg-[#b8933e] text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors">
-                        View Details
-                      </button>
-                    </Link>
-                  </div>
+              </Link>
+              <Link href="/current-auctions">
+                <div className="inline-flex items-center gap-2 bg-[#C9A84C]/15 hover:bg-[#C9A84C]/25 border border-[#C9A84C]/40 text-[#9b7d34] font-semibold px-6 py-3 rounded-lg transition-colors cursor-pointer text-sm">
+                  <Gavel size={15} />
+                  View Current Auctions
                 </div>
-              </div>
-            ))}
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -249,7 +188,7 @@ export default function Home() {
       {/* Video Teaser */}
       <section className="py-20 bg-[#F5F5F5]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Watch Our Latest Listings on YouTube</h2>
+          <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Watch Our Latest on YouTube</h2>
           <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-10" />
           <div
             className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl cursor-pointer group"
@@ -285,7 +224,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {counties.map((county) => (
-              <Link key={county.name} href={`/listings?q=${county.name}`}>
+              <Link key={county.name} href="/contact">
                 <div className="relative aspect-video rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow">
                   <img src={county.image} alt={county.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-[#1B2D4F]/40 group-hover:bg-[#1B2D4F]/60 transition-colors" />
@@ -310,7 +249,7 @@ export default function Home() {
             <span className="text-[#C9A84C]">Let's Talk.</span>
           </h2>
           <p className="text-white/60 text-lg mb-10 max-w-xl mx-auto">
-            Our team is ready to help you find your dream property or get maximum value for what you're selling.
+            Our team is ready to help you find your next property or get maximum value for what you're selling.
           </p>
           <Link href="/contact">
             <button className="bg-[#C9A84C] hover:bg-[#b8933e] text-white font-bold px-10 py-5 rounded-xl text-lg transition-all hover:shadow-2xl hover:-translate-y-1">

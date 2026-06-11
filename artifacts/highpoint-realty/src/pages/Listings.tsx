@@ -21,10 +21,10 @@ export default function Listings() {
           <div className="w-20 h-20 bg-[#1B2D4F]/8 rounded-full flex items-center justify-center mx-auto mb-6">
             <Home size={36} className="text-[#1B2D4F]/50" />
           </div>
-          <h2 className="font-serif text-3xl font-bold text-[#1B2D4F] mb-3">Coming Soon</h2>
+          <h2 className="font-serif text-3xl font-bold text-[#1B2D4F] mb-3">Live MLS Listings Coming Soon</h2>
           <p className="text-gray-500 text-base leading-relaxed mb-8">
-            Our listings are being updated. Check back soon — or reach out to our team directly
-            to ask about available properties.
+            We're connecting to the MLS to bring you real-time listings. In the meantime,
+            contact our team directly to ask about available properties.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link href="/contact">
