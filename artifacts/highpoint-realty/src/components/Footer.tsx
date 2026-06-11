@@ -99,7 +99,15 @@ export default function Footer() {
           <p className="text-white/40 text-sm">
             © 2026 High Point Realty & Auction. All rights reserved.
           </p>
-          <p className="text-white/40 text-xs">highpointky.com</p>
+          <div className="flex items-center gap-4">
+            <Link href="/privacy-policy" className="text-white/40 hover:text-[#C9A84C] text-xs transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-white/20 text-xs">|</span>
+            <Link href="/terms-of-service" className="text-white/40 hover:text-[#C9A84C] text-xs transition-colors">
+              Terms of Service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
