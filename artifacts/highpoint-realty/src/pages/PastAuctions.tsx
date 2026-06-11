@@ -1,44 +1,65 @@
 import { useState, useMemo } from "react";
-import { Search, DollarSign, Calendar, ChevronDown, ChevronUp } from "lucide-react";
-import { pastAuctions, type PastAuction } from "@/data/pastAuctions";
+import { Search, MapPin, Calendar, Gavel, Wifi, Monitor } from "lucide-react";
+import { pastAuctions } from "@/data/pastAuctions";
+
+const allCounties = ["All", ...Array.from(new Set(pastAuctions.map((a) => a.county))).sort()];
+const allYears = ["All", ...Array.from(new Set(pastAuctions.map((a) => a.year.toString()))).sort((a, b) => Number(b) - Number(a))];
 
 export default function PastAuctions() {
   const [search, setSearch] = useState("");
   const [year, setYear] = useState("All");
   const [county, setCounty] = useState("All");
-  const [type, setType] = useState("All");
-  const [sort, setSort] = useState("Newest First");
-  const [expanded, setExpanded] = useState<number | null>(null);
-
-  const counties = ["All", ...Array.from(new Set(pastAuctions.map((a) => a.county))).sort()];
+  const [category, setCategory] = useState("All");
 
   const filtered = useMemo(() => {
     let result = [...pastAuctions];
-
     if (search) {
       const q = search.toLowerCase();
-      result = result.filter((a) => a.address.toLowerCase().includes(q) || a.county.toLowerCase().includes(q));
+      result = result.filter(
+        (a) =>
+          a.title.toLowerCase().includes(q) ||
+          a.location.toLowerCase().includes(q) ||
+          a.county.toLowerCase().includes(q)
+      );
     }
     if (year !== "All") result = result.filter((a) => a.year.toString() === year);
     if (county !== "All") result = result.filter((a) => a.county === county);
-    if (type !== "All") result = result.filter((a) => a.type === type);
-
-    if (sort === "Newest First") result.sort((a, b) => b.id - a.id);
-    if (sort === "Oldest First") result.sort((a, b) => a.id - b.id);
-
+    if (category !== "All") result = result.filter((a) => a.category === category);
     return result;
-  }, [search, year, county, type, sort]);
+  }, [search, year, county, category]);
+
+  const totalHighBid = pastAuctions.filter((a) => a.highBid > 0).reduce((sum, a) => sum + a.highBid, 0);
+  const realEstateCount = pastAuctions.filter((a) => a.category === "Real Estate").length;
 
   return (
     <div className="min-h-screen bg-[#F5F5F5]">
       {/* Header */}
-      <div className="bg-[#1B2D4F] pt-28 pb-14 px-4">
+      <div className="bg-[#1B2D4F] pt-28 pb-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="font-serif text-5xl text-white font-bold mb-4">Past Auctions</h1>
-          <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-4" />
-          <p className="text-white/60 text-lg max-w-xl mx-auto">
-            Browse our auction history — properties sold across Central and Eastern Kentucky.
+          <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full mb-6" />
+          <p className="text-white/60 text-lg max-w-xl mx-auto mb-10">
+            A record of every auction conducted by High Point Realty &amp; Auction.
           </p>
+          {/* Stats */}
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-[#C9A84C]">{pastAuctions.length}</div>
+              <div className="text-white/50 text-sm mt-1">Total Auctions</div>
+            </div>
+            <div className="w-px h-10 bg-white/20 hidden sm:block" />
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-[#C9A84C]">{realEstateCount}</div>
+              <div className="text-white/50 text-sm mt-1">Real Estate</div>
+            </div>
+            <div className="w-px h-10 bg-white/20 hidden sm:block" />
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-[#C9A84C]">
+                ${(totalHighBid / 1_000_000).toFixed(1)}M+
+              </div>
+              <div className="text-white/50 text-sm mt-1">Recorded High Bids</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -49,7 +70,7 @@ export default function PastAuctions() {
             <Search size={15} className="text-gray-400" />
             <input
               type="text"
-              placeholder="Search by address or county..."
+              placeholder="Search by title, city, or county..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="flex-1 bg-transparent text-sm outline-none text-gray-700 placeholder-gray-400"
@@ -59,9 +80,9 @@ export default function PastAuctions() {
           <select
             value={year}
             onChange={(e) => setYear(e.target.value)}
-            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none"
+            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none cursor-pointer"
           >
-            {["All", "2026", "2025", "2024", "2023"].map((y) => (
+            {allYears.map((y) => (
               <option key={y}>{y === "All" ? "Year: All" : y}</option>
             ))}
           </select>
@@ -69,93 +90,96 @@ export default function PastAuctions() {
           <select
             value={county}
             onChange={(e) => setCounty(e.target.value)}
-            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none"
+            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none cursor-pointer"
           >
-            {counties.map((c) => (
-              <option key={c}>{c === "All" ? "County: All" : c}</option>
+            {allCounties.map((c) => (
+              <option key={c}>{c === "All" ? "County: All" : `${c} County`}</option>
             ))}
           </select>
 
           <select
-            value={type}
-            onChange={(e) => setType(e.target.value)}
-            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none cursor-pointer"
           >
-            {["All", "Residential", "Commercial", "Land"].map((t) => (
-              <option key={t}>{t === "All" ? "Type: All" : t}</option>
+            {["All", "Real Estate", "Personal Property"].map((c) => (
+              <option key={c}>{c === "All" ? "Type: All" : c}</option>
             ))}
-          </select>
-
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            className="text-xs border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 outline-none"
-          >
-            <option>Newest First</option>
-            <option>Oldest First</option>
           </select>
 
           <span className="text-xs text-gray-500 ml-auto">
-            {filtered.length} result{filtered.length !== 1 ? "s" : ""}
+            {filtered.length} of {pastAuctions.length} auctions
           </span>
         </div>
       </div>
 
       {/* Results */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {filtered.length === 0 ? (
-          <div className="text-center py-20 text-gray-400">No past auctions match your search.</div>
+          <div className="text-center py-20 text-gray-400">No auctions match your search.</div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="space-y-3">
             {filtered.map((auction) => (
-              <div key={auction.id} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                <div className="relative aspect-video overflow-hidden">
-                  <img src={auction.image} alt={auction.address} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-red-700 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
-                      SOLD
-                    </span>
-                  </div>
-                  <div className="absolute top-3 right-3">
-                    <span className={`text-xs px-2 py-1 rounded-full font-medium text-white ${
-                      auction.type === "Residential" ? "bg-blue-600" :
-                      auction.type === "Commercial" ? "bg-purple-600" : "bg-green-600"
-                    }`}>
-                      {auction.type}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-4">
-                  <h3 className="font-semibold text-[#1B2D4F] text-sm leading-tight mb-3 line-clamp-2">
-                    {auction.address}
-                  </h3>
-
-                  <div className="flex items-center gap-2 mb-2">
-                    <DollarSign size={14} className="text-green-600 flex-shrink-0" />
-                    <span className="font-bold text-green-600 text-lg">${auction.soldPrice.toLocaleString()}</span>
+              <div
+                key={auction.id}
+                className="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md hover:border-[#C9A84C]/30 transition-all duration-200 p-5"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#1B2D4F]/6 rounded-xl flex items-center justify-center">
+                    <Gavel size={20} className="text-[#1B2D4F]/60" />
                   </div>
 
-                  <div className="flex items-center gap-2 text-gray-500 text-xs mb-4">
-                    <Calendar size={12} />
-                    <span>{auction.soldDate}</span>
-                  </div>
-
-                  <button
-                    onClick={() => setExpanded(expanded === auction.id ? null : auction.id)}
-                    className="w-full flex items-center justify-center gap-2 border border-[#1B2D4F] text-[#1B2D4F] text-xs font-semibold py-2 rounded-lg hover:bg-[#1B2D4F] hover:text-white transition-colors"
-                  >
-                    View Details
-                    {expanded === auction.id ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-                  </button>
-
-                  {expanded === auction.id && (
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <p className="text-gray-600 text-xs leading-relaxed">{auction.description}</p>
-                      <div className="mt-2 text-xs text-gray-400">{auction.county} County</div>
+                  {/* Main info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${
+                        auction.category === "Real Estate"
+                          ? "bg-[#1B2D4F]/10 text-[#1B2D4F]"
+                          : "bg-[#C9A84C]/15 text-[#9b7d34]"
+                      }`}>
+                        {auction.category}
+                      </span>
+                      <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium flex items-center gap-1 ${
+                        auction.format === "Live Webcast"
+                          ? "bg-blue-50 text-blue-600"
+                          : "bg-purple-50 text-purple-600"
+                      }`}>
+                        {auction.format === "Live Webcast"
+                          ? <Wifi size={10} />
+                          : <Monitor size={10} />
+                        }
+                        {auction.format}
+                      </span>
                     </div>
-                  )}
+                    <h3 className="font-serif font-bold text-[#1B2D4F] text-base leading-snug">
+                      {auction.title}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-4 mt-1.5">
+                      <span className="flex items-center gap-1.5 text-gray-500 text-xs">
+                        <MapPin size={11} />
+                        {auction.location} &middot; {auction.county} County
+                      </span>
+                      <span className="flex items-center gap-1.5 text-gray-500 text-xs">
+                        <Calendar size={11} />
+                        {auction.date}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* High bid */}
+                  <div className="sm:text-right flex-shrink-0">
+                    {auction.highBid > 0 ? (
+                      <>
+                        <div className="text-xs text-gray-400 mb-0.5">High Bid</div>
+                        <div className="font-bold text-green-600 text-lg">
+                          ${auction.highBid.toLocaleString()}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-xs text-gray-400 italic">Bid undisclosed</div>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
