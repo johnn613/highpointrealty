@@ -3,6 +3,7 @@ import { Phone, Mail, Clock, MapPin, ChevronDown } from "lucide-react";
 import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
 import kenPhoto from "@assets/team-ken.jpg";
 import johnPhoto from "@assets/team-john.jpg";
+import jordanPhoto from "@assets/IMG_8808_1781188693507.jpeg";
 import nancyPhoto from "@assets/team-nancy.jpg";
 
 const agents = [
@@ -36,7 +37,7 @@ const agents = [
   {
     name: "Jordan Adkins",
     title: "Realtor / Agent",
-    photo: "https://picsum.photos/seed/jordan-adkins/200/200",
+    photo: jordanPhoto,
     phone: "423-539-1511",
     tel: "4235391511",
     email: null,
