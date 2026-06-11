@@ -64,9 +64,9 @@ export default function Footer() {
                   <Phone size={13} />
                   859-200-2084
                 </a>
-                <a href="mailto:ken@highpointky.com" className="flex items-center gap-2 text-white/60 hover:text-[#C9A84C] text-sm transition-colors mt-1">
+                <a href="mailto:Kenneth.DeGrant@gmail.com" className="flex items-center gap-2 text-white/60 hover:text-[#C9A84C] text-sm transition-colors mt-1">
                   <Mail size={13} />
-                  ken@highpointky.com
+                  Kenneth.DeGrant@gmail.com
                 </a>
               </div>
               <div>
