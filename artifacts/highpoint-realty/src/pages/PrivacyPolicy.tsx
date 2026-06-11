@@ -183,7 +183,7 @@ export default function PrivacyPolicy() {
           </p>
           <div className="mt-3 bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm">
             <p className="font-semibold text-[#1B2D4F]">High Point Realty &amp; Auction</p>
-            <p className="text-gray-500 mt-1">[MAILING ADDRESS]</p>
+            <p className="text-gray-500 mt-1">226 N 2nd St, Richmond, KY 40475</p>
             <a
               href="mailto:Kenneth.DeGrant@gmail.com"
               className="text-[#1B2D4F] underline hover:text-[#C9A84C] mt-1 inline-block"
