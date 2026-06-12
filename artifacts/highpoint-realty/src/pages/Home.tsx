@@ -3,6 +3,8 @@ import { Link } from "wouter";
 import { Home as HomeIcon, Gavel, Phone, Play, ArrowRight, ChevronRight } from "lucide-react";
 import VideoModal from "@/components/VideoModal";
 import { videos } from "@/data/videos";
+import kenPhoto from "@assets/team-ken.jpg";
+import johnPhoto from "@assets/team-john.jpg";
 
 const counties = [
   { name: "Madison", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" },
@@ -151,6 +153,7 @@ export default function Home() {
                 title: "Broker/Owner",
                 phone: "859-200-2084",
                 tel: "8592002084",
+                photo: kenPhoto,
                 bio: "Ken has been serving Kentucky buyers and sellers for over a decade, specializing in residential, commercial, and auction real estate. His deep knowledge of Central and Eastern Kentucky markets ensures clients get the best results.",
               },
               {
@@ -158,13 +161,14 @@ export default function Home() {
                 title: "Auctioneer",
                 phone: "606-496-6530",
                 tel: "6064966530",
+                photo: johnPhoto,
                 bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. His expertise in auction marketing consistently delivers top dollar for sellers.",
               },
             ].map((agent) => (
               <div key={agent.name} className="bg-[#F5F5F5] rounded-xl p-8 text-center hover:shadow-lg transition-shadow">
                 <div className="w-32 h-32 mx-auto rounded-full overflow-hidden mb-5 shadow-lg border-4 border-[#C9A84C]/30">
                   <img
-                    src={`https://via.placeholder.com/300x300?text=${encodeURIComponent(agent.name.split(" ").map(n => n[0]).join(""))}`}
+                    src={agent.photo}
                     alt={agent.name}
                     className="w-full h-full object-cover"
                   />
