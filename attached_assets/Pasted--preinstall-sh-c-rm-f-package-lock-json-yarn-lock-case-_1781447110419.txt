@@ -1,0 +1,28 @@
+. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+└─ Done in 30ms
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: esbuild@0.27.3
+
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+Scope: all 9 workspace projects
+✓ Lockfile passes supply-chain policies (verified 2s ago)
+Lockfile is up to date, resolution step is skipped
+Already up to date
+. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+└─ Done in 11ms
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: esbuild@0.27.3
+
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+[ERROR] Command failed with exit code 1: pnpm install
+
+pnpm: Command failed with exit code 1: pnpm install
+    at getFinalError (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:34053:14)
+    at makeError (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:36360:21)
+    at getSyncResult (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:38204:10)
+    at spawnSubprocessSync (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:38164:14)
+    at execaCoreSync (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:38094:23)
+    at callBoundExeca (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:40622:23)
+    at boundExeca (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:40599:49)
+    at sync (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:40754:14)
+    at runPnpmCli (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:244493:5)
+    at runDepsStatusCheck (file:///www/highpointrealty_794/.nvm/versions/node/v24.16.0/lib/node_modules/pnpm/dist/pnpm.mjs:246225:7)
+highpointrealty@xcw-highpointrealty-live-prod:~/highpointrealty/highpointrealty$ 
