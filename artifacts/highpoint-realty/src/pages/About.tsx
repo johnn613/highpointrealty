@@ -3,7 +3,6 @@ import { Link } from "wouter";
 import { Phone, Mail, MapPin, Handshake, Gavel, Home, ChevronDown } from "lucide-react";
 import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
 import kenPhoto from "@assets/team-ken.jpg";
-import jordanPhoto from "@assets/IMG_8808_1781188693507.jpeg";
 import johnPhoto from "@assets/team-john.jpg";
 import nancyPhoto from "@assets/team-nancy.jpg";
 
@@ -57,15 +56,6 @@ const team = [
     tel: "6063710997",
     email: null,
     bio: "Nancy brings a unique perspective to real estate, having transitioned from a career in education. As a former teacher, she understands that no two clients — like no two students — are the same.\n\nShe takes a personalized approach to every transaction, whether you're a first-time buyer, a growing family, or an empty-nester. Her commitment is to make your journey to homeownership as smooth and enjoyable as possible.",
-  },
-  {
-    name: "Jordan Adkins",
-    title: "Realtor / Agent",
-    photo: jordanPhoto,
-    phone: "423-539-1511",
-    tel: "4235391511",
-    email: null,
-    bio: "Jordan brings energy and local knowledge to every transaction, helping buyers and sellers navigate the Kentucky real estate market with confidence. Whether you're searching for your first home or your next investment, Jordan is dedicated to making the process seamless from start to finish.",
   },
   {
     name: "John Montgomery",
