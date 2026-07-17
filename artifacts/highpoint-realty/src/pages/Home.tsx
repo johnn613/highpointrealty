@@ -28,6 +28,7 @@ export default function Home() {
             src="https://www.youtube.com/embed/v1ZDDpicXp8?autoplay=1&mute=1&loop=1&playlist=v1ZDDpicXp8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&enablejsapi=1&start=5"
             title="High Point Realty Background"
             allow="autoplay; encrypted-media"
+            loading="lazy"
             className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full"
             style={{ border: "none" }}
           />
@@ -170,6 +171,9 @@ export default function Home() {
                   <img
                     src={agent.photo}
                     alt={agent.name}
+                    width={128}
+                    height={128}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -201,6 +205,9 @@ export default function Home() {
             <img
               src={`https://img.youtube.com/vi/${teaserVideo.youtubeId}/maxresdefault.jpg`}
               alt={teaserVideo.title}
+              width={1280}
+              height={720}
+              loading="lazy"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
             <div className="absolute inset-0 bg-[#1B2D4F]/40 group-hover:bg-[#1B2D4F]/50 transition-colors" />
@@ -230,7 +237,7 @@ export default function Home() {
             {counties.map((county) => (
               <Link key={county.name} href="/contact">
                 <div className="relative aspect-video rounded-xl overflow-hidden cursor-pointer group shadow-md hover:shadow-xl transition-shadow">
-                  <img src={county.image} alt={county.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  <img src={county.image} alt={county.name} width={600} height={338} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-[#1B2D4F]/40 group-hover:bg-[#1B2D4F]/60 transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">

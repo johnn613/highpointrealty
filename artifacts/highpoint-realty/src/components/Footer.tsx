@@ -13,6 +13,9 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="High Point Realty & Auction"
+                width={240}
+                height={64}
+                loading="lazy"
                 className="h-16 w-auto brightness-0 invert"
               />
             </div>

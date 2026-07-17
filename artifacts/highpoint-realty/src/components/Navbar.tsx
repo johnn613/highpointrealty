@@ -46,6 +46,8 @@ export default function Navbar() {
             <img
               src={logo}
               alt="High Point Realty & Auction"
+              width={180}
+              height={48}
               className="h-10 md:h-12 w-auto brightness-0 invert"
             />
           </Link>

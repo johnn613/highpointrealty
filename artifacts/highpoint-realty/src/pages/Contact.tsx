@@ -75,6 +75,9 @@ export default function Contact() {
                 <img
                   src={agent.photo}
                   alt={agent.name}
+                  width={64}
+                  height={64}
+                  loading="lazy"
                   className="w-16 h-16 rounded-full object-cover border-2 border-[#C9A84C]/40 flex-shrink-0"
                   style={{ objectPosition: (agent as any).photoPosition ?? "center" }}
                 />

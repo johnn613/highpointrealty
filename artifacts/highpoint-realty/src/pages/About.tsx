@@ -121,6 +121,9 @@ export default function About() {
                       <img
                         src={agent.photo}
                         alt={agent.name}
+                        width={112}
+                        height={112}
+                        loading="lazy"
                         className="w-full h-full object-cover"
                         style={{ objectPosition: agent.photoPosition ?? "center" }}
                       />
