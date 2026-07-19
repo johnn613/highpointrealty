@@ -21,7 +21,8 @@ export default function Home() {
   const teaserVideo = videos[0];
 
   useEffect(() => {
-    const t = setTimeout(() => setShowHeroVideo(true), 2500);
+    if (window.innerWidth < 768) return;
+    const t = setTimeout(() => setShowHeroVideo(true), 1500);
     return () => clearTimeout(t);
   }, []);
 
