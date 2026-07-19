@@ -7,12 +7,12 @@ import kenPhoto from "@assets/team-ken.jpg";
 import johnPhoto from "@assets/team-john.jpg";
 
 const counties = [
-  { name: "Madison", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600" },
-  { name: "Estill", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=600" },
-  { name: "Rockcastle", image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=600" },
-  { name: "Jackson", image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600" },
-  { name: "Lee", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600" },
-  { name: "Breathitt", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600" },
+  { name: "Madison", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fm=webp&q=80" },
+  { name: "Estill", image: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&auto=format&fm=webp&q=80" },
+  { name: "Rockcastle", image: "https://images.unsplash.com/photo-1449844908441-8829872d2607?w=400&auto=format&fm=webp&q=80" },
+  { name: "Jackson", image: "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&auto=format&fm=webp&q=80" },
+  { name: "Lee", image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&auto=format&fm=webp&q=80" },
+  { name: "Breathitt", image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=400&auto=format&fm=webp&q=80" },
 ];
 
 export default function Home() {
@@ -29,6 +29,15 @@ export default function Home() {
     <div className="min-h-screen bg-[#F5F5F5]">
       {/* Hero */}
       <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+        <picture className="absolute inset-0 -z-10 overflow-hidden">
+          <source media="(max-width: 767px)" srcSet="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&auto=format&fm=webp&q=80" />
+          <img
+            src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&auto=format&fm=webp&q=85"
+            alt=""
+            fetchPriority="high"
+            className="w-full h-full object-cover"
+          />
+        </picture>
         {showHeroVideo && (
           <div className="absolute inset-0 pointer-events-none">
             <iframe
@@ -40,10 +49,6 @@ export default function Home() {
             />
           </div>
         )}
-        <div
-          className="absolute inset-0 bg-cover bg-center -z-10"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1920')" }}
-        />
         <div className="absolute inset-0 bg-[#1B2D4F]/65" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
           <div className="inline-block mb-6 px-4 py-2 bg-[#C9A84C]/20 border border-[#C9A84C]/40 rounded-full text-[#C9A84C] text-sm font-medium uppercase tracking-widest">
@@ -106,7 +111,7 @@ export default function Home() {
                   </div>
                   <h3 className="font-serif text-xl font-bold text-[#1B2D4F] mb-3">{service.title}</h3>
                   <p className="text-gray-600 text-sm leading-relaxed mb-4">{service.desc}</p>
-                  <div className="flex items-center gap-1 text-[#C9A84C] text-sm font-semibold">
+                  <div className="flex items-center gap-1 text-[#7D5E00] text-sm font-semibold">
                     Learn More <ChevronRight size={16} />
                   </div>
                 </div>
@@ -185,7 +190,7 @@ export default function Home() {
                   />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-[#1B2D4F] mb-1">{agent.name}</h3>
-                <p className="text-[#C9A84C] text-sm font-semibold uppercase tracking-widest mb-4">{agent.title}</p>
+                <p className="text-[#7D5E00] text-sm font-semibold uppercase tracking-widest mb-4">{agent.title}</p>
                 <p className="text-gray-600 text-sm leading-relaxed mb-5">{agent.bio}</p>
                 <a
                   href={`tel:${agent.tel}`}

@@ -73,6 +73,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="tel:8592002084"
+              aria-label="Call Ken DeGrant: 859-200-2084"
               className="hidden sm:flex items-center gap-2 bg-[#C9A84C] text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-[#b8933e] transition-colors"
             >
               <Phone size={14} />

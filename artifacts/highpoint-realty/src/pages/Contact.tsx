@@ -83,7 +83,7 @@ export default function Contact() {
                 />
                 <div className="text-left flex-1 min-w-0">
                   <div className="font-serif text-xl font-bold text-[#1B2D4F]">{agent.name}</div>
-                  <div className="text-[#C9A84C] text-xs font-semibold uppercase tracking-widest mt-0.5">{agent.title}</div>
+                  <div className="text-[#7D5E00] text-xs font-semibold uppercase tracking-widest mt-0.5">{agent.title}</div>
                 </div>
                 <ChevronDown
                   size={20}
