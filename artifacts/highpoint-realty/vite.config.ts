@@ -27,16 +27,8 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
-            if (id.includes("react-dom")) return "react-dom";
-            if (id.includes("react")) return "react";
-            if (id.includes("@tanstack")) return "query";
-            if (id.includes("wouter")) return "router";
-            if (id.includes("lucide-react")) return "icons";
-            if (id.includes("@radix-ui")) return "radix";
-            return "vendor";
-          }
+        manualChunks: {
+          vendor: ["react", "react-dom", "wouter", "@tanstack/react-query", "lucide-react"],
         },
       },
     },
