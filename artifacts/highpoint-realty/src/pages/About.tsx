@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "wouter";
 import { Phone, Mail, MapPin, Handshake, Gavel, Home, ChevronDown } from "lucide-react";
-import davidPhoto from "@assets/638324033_900082906359325_156739900027272722_n_1775227230664.jpg";
-import kenPhoto from "@assets/team-ken.jpg";
-import johnPhoto from "@assets/team-john.jpg";
-import nancyPhoto from "@assets/team-nancy.jpg";
+import davidPhoto from "@assets/david-photo.webp";
+import kenPhoto from "@assets/team-ken.webp";
+import johnPhoto from "@assets/team-john.webp";
+import nancyPhoto from "@assets/team-nancy.webp";
 
 const whyChoose = [
   {

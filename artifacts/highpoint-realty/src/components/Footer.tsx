@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Phone, Mail, Facebook, Instagram, Youtube, MapPin } from "lucide-react";
-import logo from "@assets/HPLogos3_(1)_1773882324655.png";
+import logo from "@assets/HPLogos3_logo.webp";
 
 export default function Footer() {
   return (

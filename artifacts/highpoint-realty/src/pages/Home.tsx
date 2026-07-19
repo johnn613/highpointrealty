@@ -3,8 +3,8 @@ import { Link } from "wouter";
 import { Home as HomeIcon, Gavel, Phone, Play, ArrowRight, ChevronRight } from "lucide-react";
 import VideoModal from "@/components/VideoModal";
 import { videos } from "@/data/videos";
-import kenPhoto from "@assets/team-ken.jpg";
-import johnPhoto from "@assets/team-john.jpg";
+import kenPhoto from "@assets/team-ken.webp";
+import johnPhoto from "@assets/team-john.webp";
 
 const counties = [
   { name: "Madison", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fm=webp&q=80" },

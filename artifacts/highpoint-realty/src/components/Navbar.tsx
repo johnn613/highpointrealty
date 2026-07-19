@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Phone, Menu, X } from "lucide-react";
-import logo from "@assets/HPLogos3_(1)_1773882324655.png";
+import logo from "@assets/HPLogos3_logo.webp";
 
 const navLinks = [
   { href: "/", label: "Home" },
