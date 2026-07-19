@@ -23,13 +23,13 @@ export default function Footer() {
               "Your High Point in Real Estate & Auction" — Serving Kentucky with integrity.
             </p>
             <div className="flex items-center gap-3">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="High Point Realty on Facebook" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
                 <Facebook size={16} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="High Point Realty on Instagram" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
                 <Instagram size={16} />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="High Point Realty on YouTube" className="w-9 h-9 bg-white/10 hover:bg-[#C9A84C] rounded-full flex items-center justify-center transition-colors">
                 <Youtube size={16} />
               </a>
             </div>
