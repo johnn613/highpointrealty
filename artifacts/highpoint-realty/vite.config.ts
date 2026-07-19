@@ -7,6 +7,7 @@ const rawPort = process.env.PORT;
 const port = rawPort && !Number.isNaN(Number(rawPort)) ? Number(rawPort) : 3000;
 
 const basePath = process.env.BASE_PATH ?? "/";
+const isSSR = process.env.BUILD_SSR === "true";
 
 export default defineConfig({
   base: basePath,
@@ -23,15 +24,24 @@ export default defineConfig({
   },
   root: path.resolve(import.meta.dirname),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: isSSR
+      ? path.resolve(import.meta.dirname, "dist/server")
+      : path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ["react", "react-dom", "wouter", "@tanstack/react-query", "lucide-react"],
-        },
-      },
-    },
+    ...(isSSR
+      ? {}
+      : {
+          rollupOptions: {
+            output: {
+              manualChunks: {
+                vendor: ["react", "react-dom", "wouter", "@tanstack/react-query", "lucide-react"],
+              },
+            },
+          },
+        }),
+  },
+  ssr: {
+    noExternal: isSSR ? ["@workspace/*"] : [],
   },
   server: {
     port,
