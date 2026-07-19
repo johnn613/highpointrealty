@@ -54,7 +54,7 @@ export default function ListingDetail() {
                 <div>
                   <div className={`inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide mb-3 ${
                     listing.status === "Active" ? "bg-green-100 text-green-700" :
-                    listing.status === "Auction" ? "bg-[#C9A84C]/20 text-[#C9A84C]" :
+                    listing.status === "Auction" ? "bg-[#C9A84C]/20 text-[#7D5E00]" :
                     "bg-blue-100 text-blue-700"
                   }`}>
                     {listing.status}
@@ -167,7 +167,7 @@ export default function ListingDetail() {
                 />
                 <div>
                   <div className="font-bold text-[#1B2D4F]">Ken DeGrant</div>
-                  <div className="text-[#C9A84C] text-sm">Broker/Owner</div>
+                  <div className="text-[#7D5E00] text-sm">Broker/Owner</div>
                   <a href="tel:8592002084" className="text-gray-500 text-sm hover:text-[#C9A84C] transition-colors">
                     859-200-2084
                   </a>

@@ -101,7 +101,7 @@ export default function Videos() {
             {/* Live status indicator */}
             <div className="flex items-center gap-2 text-xs text-gray-500 flex-shrink-0">
               {isLoading || isRefetching ? (
-                <span className="flex items-center gap-1.5 text-[#C9A84C]">
+                <span className="flex items-center gap-1.5 text-[#7D5E00]">
                   <RefreshCw size={13} className="animate-spin" />
                   Syncing…
                 </span>

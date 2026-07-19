@@ -1,22 +1,24 @@
 # High Point Realty & Auction
 
-> Kentucky's premier real estate and auction company. Serving Central and Eastern Kentucky with integrity.
+> Kentucky's premier real estate and auction company. Full-service brokerage and professional auction services across Central and Eastern Kentucky.
 
-## About
+High Point Realty & Auction is based in Richmond, Kentucky and serves Madison, Estill, Rockcastle, Jackson, Lee, Breathitt, and surrounding counties. The company offers residential and commercial real estate representation as well as onsite and online property auctions conducted by licensed Kentucky auctioneers.
 
-High Point Realty & Auction is a full-service real estate and auction firm based in Richmond, Kentucky. We specialize in residential and commercial real estate sales as well as professional auction services across Central and Eastern Kentucky.
+## Core Pages
 
-## Services
-
-- **Real Estate Sales**: Buyer and seller representation for residential and commercial properties
-- **Auction Services**: Onsite and online auctions for real property and personal property
+- [Home](https://highpointky.com/): Overview of services, team, counties served, and featured video content
+- [Current Auctions](https://highpointky.com/current-auctions): Live and upcoming property auctions conducted by licensed Kentucky auctioneers via HiBid platform
+- [Listings](https://highpointky.com/listings): Current real estate listings for sale across Central and Eastern Kentucky
+- [Past Auctions](https://highpointky.com/past-auctions): Archive of completed auctions with results and recorded high bids
+- [About](https://highpointky.com/about): Team profiles, company history, and credentials
+- [Contact](https://highpointky.com/contact): Contact information, office address, and agent directory
 
 ## Team
 
-- **Ken DeGrant** — Broker/Owner | 859-200-2084
-- **David Reichley** — Agent
-- **Nancy Nichols** — Agent
-- **John Montgomery** — Auctioneer | 606-496-6530
+- **Ken DeGrant** — Broker/Owner | 859-200-2084 | Kenneth.DeGrant@gmail.com
+- **David Reichley** — Realtor/Agent
+- **Nancy Nichols** — Realtor/Agent
+- **John Montgomery** — Licensed Auctioneer | 606-496-6530
 
 ## Service Area
 
@@ -27,13 +29,10 @@ Madison, Estill, Rockcastle, Jackson, Lee, and Breathitt counties in Kentucky, a
 - Address: 226 N 2nd St, Richmond, KY 40475
 - Phone: 859-200-2084
 - Email: Kenneth.DeGrant@gmail.com
+- Office Hours: Monday–Friday 9am–5pm EST
 
-## Pages
+## Optional
 
-- [Home](https://www.highpointky.com/)
-- [Listings](https://www.highpointky.com/listings)
-- [Current Auctions](https://www.highpointky.com/current-auctions)
-- [Past Auctions](https://www.highpointky.com/past-auctions)
-- [Videos](https://www.highpointky.com/videos)
-- [About](https://www.highpointky.com/about)
-- [Contact](https://www.highpointky.com/contact)
+- [Videos](https://highpointky.com/videos): YouTube video library featuring property tours and auction highlights
+- [Privacy Policy](https://highpointky.com/privacy-policy): Privacy policy for highpointky.com
+- [Terms of Service](https://highpointky.com/terms-of-service): Terms of service for highpointky.com
