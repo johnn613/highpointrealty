@@ -102,7 +102,7 @@ export default function Contact() {
               </button>
 
               {/* Expandable dropdown */}
-              <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-72 opacity-100" : "max-h-0 opacity-0"}`}>
+              <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-[600px] opacity-100" : "max-h-0 opacity-0"}`}>
                 <div className="px-5 pb-5 border-t border-gray-100 pt-4 space-y-4">
                   <p className="text-gray-600 text-sm leading-relaxed">{agent.bio}</p>
                   <div className="flex flex-col gap-2">
