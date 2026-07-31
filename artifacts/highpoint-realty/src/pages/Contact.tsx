@@ -4,6 +4,7 @@ import davidPhoto from "@assets/david-photo.webp";
 import kenPhoto from "@assets/team-ken.webp";
 import johnPhoto from "@assets/team-john.webp";
 import nancyPhoto from "@assets/team-nancy.webp";
+import bradleyPhoto from "@assets/bradley-conner.webp";
 
 const agents = [
   {
@@ -42,6 +43,15 @@ const agents = [
     email: null,
     bio: "Licensed Kentucky auctioneer with decades of experience in onsite and online real estate auctions. Consistently delivers top dollar for sellers.",
     photoPosition: "top",
+  },
+  {
+    name: "Bradley Conner",
+    title: "Auctioneer",
+    photo: bradleyPhoto,
+    phone: null,
+    tel: null,
+    email: null,
+    bio: "Born and raised in Madison County, Bradley brings lifelong experience in real estate, farms, construction, and heavy equipment. His hands-on background gives him a sharp eye for value and a deep understanding of the auction business. Known for his hardworking attitude, honesty, and commitment to customer service, Bradley's goal is always to make the buying and selling experience smooth and rewarding.",
   },
 ];
 
@@ -96,13 +106,15 @@ export default function Contact() {
                 <div className="px-5 pb-5 border-t border-gray-100 pt-4 space-y-4">
                   <p className="text-gray-600 text-sm leading-relaxed">{agent.bio}</p>
                   <div className="flex flex-col gap-2">
-                    <a
-                      href={`tel:${agent.tel}`}
-                      className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-3 rounded-xl hover:bg-[#162540] transition-colors"
-                    >
-                      <Phone size={16} />
-                      {agent.phone}
-                    </a>
+                    {agent.phone && (
+                      <a
+                        href={`tel:${agent.tel}`}
+                        className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-3 rounded-xl hover:bg-[#162540] transition-colors"
+                      >
+                        <Phone size={16} />
+                        {agent.phone}
+                      </a>
+                    )}
                     {agent.email && (
                       <a
                         href={`mailto:${agent.email}`}

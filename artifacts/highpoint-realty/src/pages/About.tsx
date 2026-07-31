@@ -5,6 +5,7 @@ import davidPhoto from "@assets/david-photo.webp";
 import kenPhoto from "@assets/team-ken.webp";
 import johnPhoto from "@assets/team-john.webp";
 import nancyPhoto from "@assets/team-nancy.webp";
+import bradleyPhoto from "@assets/bradley-conner.webp";
 
 const whyChoose = [
   {
@@ -66,6 +67,15 @@ const team = [
     email: null,
     bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. As a licensed Kentucky auctioneer, John has conducted hundreds of real estate auctions — from farm tracts and residential homes to commercial buildings and development land.\n\nHis expertise in auction marketing and bidder engagement consistently delivers top dollar for sellers.",
     photoPosition: "top",
+  },
+  {
+    name: "Bradley Conner",
+    title: "Auctioneer",
+    photo: bradleyPhoto,
+    phone: null,
+    tel: null,
+    email: null,
+    bio: "Bradley Conner is a proud Madison County resident, born and raised with deep roots in the community he proudly serves. Having spent his entire life around real estate, farms, construction, and heavy equipment, Bradley brings a wealth of hands-on knowledge and real-world experience to every opportunity. His background in farm and construction equipment gives him a sharp eye for value and a strong understanding of the industry from the ground up.\n\nWith a true passion for the auction business, Bradley is dedicated to helping people through every step of the buying and selling process. Known for his hardworking attitude, honesty, and commitment to customer service, he takes pride in serving others and building lasting relationships throughout the community. Whether working with land, equipment, vehicles, or personal property, Bradley's goal is always to make the experience smooth, trustworthy, and rewarding for everyone involved.",
   },
 ];
 
@@ -143,13 +153,15 @@ export default function About() {
                         <p key={i} className="text-gray-600 text-sm leading-relaxed mb-3 last:mb-0">{para}</p>
                       ))}
                       <div className="flex flex-col gap-2 mt-5 pt-5 border-t border-gray-100">
-                        <a
-                          href={`tel:${agent.tel}`}
-                          className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-2.5 rounded-lg hover:bg-[#162540] transition-colors text-sm"
-                        >
-                          <Phone size={14} />
-                          {agent.phone}
-                        </a>
+                        {agent.phone && (
+                          <a
+                            href={`tel:${agent.tel}`}
+                            className="flex items-center justify-center gap-2 bg-[#1B2D4F] text-white font-semibold py-2.5 rounded-lg hover:bg-[#162540] transition-colors text-sm"
+                          >
+                            <Phone size={14} />
+                            {agent.phone}
+                          </a>
+                        )}
                         {agent.email && (
                           <a
                             href={`mailto:${agent.email}`}
