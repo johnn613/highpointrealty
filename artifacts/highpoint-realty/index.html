@@ -1,50 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>High Point Realty &amp; Auction | Kentucky Real Estate</title>
-    <meta name="description" content="High Point Realty &amp; Auction — Kentucky's premier real estate and auction company. Serving Central and Eastern Kentucky with integrity. Call 859-200-2084." />
+    <meta
+      name="description"
+      content="High Point Realty &amp; Auction — Kentucky's premier real estate and auction company. Serving Central and Eastern Kentucky with integrity. Call 859-200-2084."
+    />
     <meta name="author" content="High Point Realty &amp; Auction" />
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="High Point Realty &amp; Auction | Kentucky Real Estate" />
-    <meta property="og:description" content="Kentucky's premier real estate and auction company. Expert representation for buyers and sellers across Central and Eastern Kentucky." />
+    <meta
+      property="og:title"
+      content="High Point Realty &amp; Auction | Kentucky Real Estate"
+    />
+    <meta
+      property="og:description"
+      content="Kentucky's premier real estate and auction company. Expert representation for buyers and sellers across Central and Eastern Kentucky."
+    />
     <meta property="og:image" content="/opengraph.jpg" />
     <meta property="og:site_name" content="High Point Realty &amp; Auction" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="High Point Realty &amp; Auction | Kentucky Real Estate" />
-    <meta name="twitter:description" content="Kentucky's premier real estate and auction company serving Central and Eastern Kentucky." />
+    <meta
+      name="twitter:title"
+      content="High Point Realty &amp; Auction | Kentucky Real Estate"
+    />
+    <meta
+      name="twitter:description"
+      content="Kentucky's premier real estate and auction company serving Central and Eastern Kentucky."
+    />
     <meta name="twitter:image" content="/opengraph.jpg" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://images.unsplash.com">
-    <link rel="preconnect" href="https://www.youtube-nocookie.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
-    <link rel="dns-prefetch" href="https://i.ytimg.com">
-    <link rel="preload" as="image" media="(max-width: 767px)" href="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&auto=format&fm=webp&q=80" fetchpriority="high">
-    <link rel="preload" as="image" media="(min-width: 768px)" href="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&auto=format&fm=webp&q=85" fetchpriority="high">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://www.youtube-nocookie.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://i.ytimg.com" />
+    <link
+      rel="preload"
+      as="image"
+      media="(max-width: 767px)"
+      href="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&auto=format&fm=webp&q=80"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      media="(min-width: 768px)"
+      href="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&auto=format&fm=webp&q=85"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    /></noscript>
 
+    <!-- IDX Tracking -->
+    <script>
+      window.addEventListener("message", function (event) {
+        // 1. Handle Listing Clicks
+        if (event.data && event.data.type === "idx_listing_click") {
+          console.log(
+            "[Parent Page Tracking] Received click from iframe:",
+            event.data,
+          );
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "idx_listing_click",
+            listing_url: event.data.listing_url,
+            listing_address: event.data.listing_address,
+          });
+
+          console.log(
+            "[Parent Page Tracking] Event pushed to dataLayer: idx_listing_click",
+          );
+        }
+
+        // 2. Handle Form Success Messages
+        if (event.data && event.data.type === "idx_form_success") {
+          console.log(
+            "[Parent Page Tracking] Received form success from iframe:",
+            event.data,
+          );
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "idx_form_success",
+            success_message: event.data.message,
+          });
+
+          console.log(
+            "[Parent Page Tracking] Event pushed to dataLayer: idx_form_success",
+          );
+        }
+      });
+    </script>
+    <!-- End IDX Tracking -->
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
 
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PMRXFCLP');</script>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMRXFCLP"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PMRXFCLP");
+    </script>
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PMRXFCLP"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
     <!-- End Google Tag Manager -->
   </body>
 </html>
