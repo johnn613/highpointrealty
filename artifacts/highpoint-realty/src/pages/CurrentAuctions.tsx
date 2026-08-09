@@ -79,6 +79,10 @@ export default function CurrentAuctions() {
           <a href="tel:8592002084" className="text-white/60 hover:text-[#C9A84C] transition-colors">
             859-200-2084
           </a>
+          {" "}or Bradley Conner at{" "}
+          <a href="tel:8595821870" className="text-white/60 hover:text-[#C9A84C] transition-colors">
+            859-582-1870
+          </a>
         </p>
       </div>
     </div>

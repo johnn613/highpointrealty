@@ -80,6 +80,14 @@ export default function Footer() {
                   606-496-6530
                 </a>
               </div>
+              <div>
+                <div className="font-semibold text-white text-sm">Bradley Conner</div>
+                <div className="text-white/50 text-xs mb-2">Auctioneer</div>
+                <a href="tel:8595821870" className="flex items-center gap-2 text-white/60 hover:text-[#C9A84C] text-sm transition-colors">
+                  <Phone size={13} />
+                  859-582-1870
+                </a>
+              </div>
             </div>
           </div>
 

@@ -148,7 +148,7 @@ export default function ListingDetail() {
                 </div>
                 <div className="mt-4 bg-[#C9A84C]/20 border border-[#C9A84C]/30 rounded-lg p-4">
                   <div className="font-semibold text-[#C9A84C] mb-1">📡 Onsite & Online Bidding Available</div>
-                  <p className="text-white/70 text-sm">Register to bid online or attend in person. Contact Ken DeGrant for details.</p>
+                  <p className="text-white/70 text-sm">Register to bid online or attend in person. Contact Ken DeGrant or Bradley Conner for details.</p>
                 </div>
               </div>
             )}

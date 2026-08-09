@@ -5,6 +5,7 @@ import VideoModal from "@/components/VideoModal";
 import { videos } from "@/data/videos";
 import kenPhoto from "@assets/team-ken.webp";
 import johnPhoto from "@assets/team-john.webp";
+import bradleyPhoto from "@assets/bradley-conner.webp";
 
 const counties = [
   { name: "Madison", image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&auto=format&fm=webp&q=80" },
@@ -160,7 +161,7 @@ export default function Home() {
             <h2 className="font-serif text-4xl font-bold text-[#1B2D4F] mb-4">Meet the Team</h2>
             <div className="w-16 h-1 bg-[#C9A84C] mx-auto rounded-full" />
           </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 name: "Ken DeGrant",
@@ -177,6 +178,14 @@ export default function Home() {
                 tel: "6064966530",
                 photo: johnPhoto,
                 bio: "John brings decades of auction experience across Kentucky, running onsite and online auctions with professionalism and results. His expertise in auction marketing consistently delivers top dollar for sellers.",
+              },
+              {
+                name: "Bradley Conner",
+                title: "Auctioneer",
+                phone: "859-582-1870",
+                tel: "8595821870",
+                photo: bradleyPhoto,
+                bio: "Born and raised in Madison County, Bradley brings lifelong experience in real estate, farms, construction, and heavy equipment. Known for his honesty and commitment to customer service, he makes every buying and selling experience smooth and rewarding.",
               },
             ].map((agent) => (
               <div key={agent.name} className="bg-[#F5F5F5] rounded-xl p-8 text-center hover:shadow-lg transition-shadow">

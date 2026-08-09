@@ -220,7 +220,7 @@ export default function PropertyManagement() {
                 At High Point Realty & Auction, we treat your investment property like our own. Our property management services are built on transparency, responsiveness, and deep knowledge of the Central and Eastern Kentucky rental market.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8">
-                Whether you own a single family home or a portfolio of commercial properties, Ken DeGrant and our management team provide personalized service that keeps your property occupied, maintained, and profitable.
+                Whether you own a single family home or a portfolio of commercial properties, Ken DeGrant, Bradley Conner, and our management team provide personalized service that keeps your property occupied, maintained, and profitable.
               </p>
               <ul className="space-y-3">
                 {benefits.map((benefit) => (
@@ -255,7 +255,7 @@ export default function PropertyManagement() {
             Let us manage your property.
           </h2>
           <p className="text-white/60 text-lg mb-8">
-            Contact Ken DeGrant today to discuss how we can help maximize the value of your investment.
+            Contact Ken DeGrant or Bradley Conner today to discuss how we can help maximize the value of your investment.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
@@ -264,6 +264,13 @@ export default function PropertyManagement() {
             >
               <Phone size={20} />
               Call Ken: 859-200-2084
+            </a>
+            <a
+              href="tel:8595821870"
+              className="flex items-center gap-3 bg-[#C9A84C] hover:bg-[#b8933e] text-white font-bold px-8 py-4 rounded-xl transition-all hover:shadow-2xl hover:-translate-y-0.5"
+            >
+              <Phone size={20} />
+              Call Bradley: 859-582-1870
             </a>
             <Link href="/contact">
               <button className="border-2 border-white text-white hover:bg-white hover:text-[#1B2D4F] font-semibold px-8 py-4 rounded-xl transition-colors">
